@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DINN 2026 — Consejo de Administración</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pino: #0B645C;
+  --olmo: #002421;
+  --castano: #27BCB0;
+  --fresno: #9AD9CF;
+  --olivo: #E8F4F3;
+  --amarillo: #FFE980;
+  --blanco: #FFFFFF;
+  --gris1: #616161;
+  --gris2: #999999;
+  --gris3: #E7E7E7;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* ── Force 16:9 + scale to fill viewport ── */
+html, body { height:100%; overflow:hidden; background:#000; }
+body { font-family:'Poppins',sans-serif; color:var(--olmo); display:flex; align-items:center; justify-content:center; }
+.deck {
+  width:1280px; height:720px;
+  position:relative;
+  transform-origin:center center;
+  background:var(--blanco);
+}
+
+/* ── Slides ── */
+.slide {
+  position:absolute; inset:0;
+  padding:3.2rem 4.5rem 2.8rem;
+  display:flex; flex-direction:column;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.35s ease;
+  overflow:hidden;
+  background:var(--blanco);
+}
+.slide.active { opacity:1; pointer-events:all; }
+.slide.bg-pino { background:var(--pino); color:var(--blanco); }
+.slide.bg-pino h1, .slide.bg-pino h2, .slide.bg-pino p, .slide.bg-pino li,
+.slide.bg-pino .label, .slide.bg-pino .body, .slide.bg-pino .sub { color:var(--blanco); }
+.slide.bg-pino .sub { color:var(--fresno); }
+
+/* ── Typography — optimized for projection ── */
+h1 { font-size:2.2rem; font-weight:700; color:var(--pino); line-height:1.3; margin-bottom:0.15rem; }
+h2 { font-size:1.05rem; font-weight:400; color:var(--gris1); line-height:1.5; margin-bottom:1rem; }
+h3 { font-size:0.75rem; font-weight:600; color:var(--castano); letter-spacing:0.12em; text-transform:uppercase; margin:0.7rem 0 0.3rem; }
+p, li { font-size:0.92rem; line-height:1.6; color:var(--olmo); }
+.label { font-size:0.65rem; font-weight:600; color:var(--castano); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem; }
+.sub { font-size:0.85rem; font-weight:400; color:var(--gris2); line-height:1.5; }
+
+/* ── Layout blocks ── */
+.slide > div:first-child { flex:1; display:flex; flex-direction:column; justify-content:flex-start; }
+.slide > div:last-child { flex:0; margin-top:auto; padding-top:1.2rem; border-top:1px solid var(--gris3); }
+.rows { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+.row { display:flex; flex-direction:column; justify-content:space-between; }
+.cols { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; }
+.col { }
+.stack { display:flex; flex-direction:column; gap:0.7rem; }
+
+/* ── Charts & Visuals ── */
+.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:1rem; }
+.chart-item { }
+.chart-label { font-size:0.75rem; font-weight:600; color:var(--gris1); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.08em; }
+.chart { width:100%; height:200px; background:var(--olivo); border-radius:0.3rem; display:flex; align-items:flex-end; justify-content:space-around; padding:1rem; gap:0.3rem; }
+.bar { background:var(--pino); border-radius:0.2rem; flex:1; }
+.bar.alt { background:var(--castano); }
+.bar.light { background:var(--fresno); }
+
+/* ── Tables ── */
+table { width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:0.5rem; }
+td, th { padding:0.6rem 0.4rem; text-align:left; border-bottom:1px solid var(--gris3); }
+th { font-weight:600; color:var(--pino); }
+tr:nth-child(even) { background:var(--olivo); }
+
+/* ── Callout / Highlight ── */
+.callout { background:var(--olivo); padding:1rem 1.2rem; border-left:3px solid var(--pino); border-radius:0.2rem; margin:0.8rem 0; }
+.callout strong { color:var(--pino); }
+
+/* ── Slide-specific ── */
+.title-slide { justify-content:center; align-items:center; text-align:center; }
+.title-slide h1 { font-size:3rem; margin-bottom:0.5rem; }
+.title-slide .sub { font-size:1rem; }
+
+.list-slide ul { margin:1rem 0 0 1.5rem; padding:0; }
+.list-slide li { margin-bottom:0.5rem; }
+.list-slide li strong { color:var(--pino); }
+
+/* ── Navigation ── */
+.nav { position:fixed; bottom:20px; right:30px; display:flex; gap:10px; }
+button { padding:8px 16px; background:var(--pino); color:var(--blanco); border:none; border-radius:3px; cursor:pointer; font-size:0.9rem; font-weight:500; }
+button:hover { background:var(--olmo); }
+
+/* ── Print ── */
+@media print {
+  body { background:var(--blanco); }
+  .slide { opacity:1 !important; page-break-after:always; margin:0; padding:2rem; box-shadow:none; }
+  .nav { display:none; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- Slide 1: Title -->
+<div class="slide bg-pino title-slide">
+  <div>
+    <h1>DINN 2026</h1>
+    <h2>Board of Directors</h2>
+    <p style="margin-top:2rem; font-size:0.95rem; line-height:1.8;">
+      Strategic Review & Brand Positioning<br>
+      April 2026 Board Meeting
+    </p>
+  </div>
+</div>
+
+<!-- Slide 2: Agenda -->
+<div class="slide">
+  <div>
+    <h1>Agenda</h1>
+    <h2>10-Slide Deck + Annexes</h2>
+    <div class="list-slide" style="margin-top:2rem;">
+      <ul>
+        <li><strong>1. FY2025 Financial Summary</strong> — P&L, margins, key drivers</li>
+        <li><strong>2. Market Position</strong> — Competitive benchmarks, growth rates</li>
+        <li><strong>3. Behavior-by-Level Analysis</strong> — Senior, mid, junior performance</li>
+        <li><strong>4. Brand Identity & Voice</strong> — DINN positioning in market</li>
+        <li><strong>5. Strategic Initiatives</strong> — FY2026 roadmap & metrics</li>
+        <li><strong>6–10. Detailed Annexes</strong> — Deep dives, case studies, financials</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: FY2025 Financial Summary -->
+<div class="slide">
+  <div>
+    <h1>FY2025 Financial Summary</h1>
+    <h2>Revenue, profitability & growth trajectory</h2>
+    <div class="rows" style="margin-top:1.5rem;">
+      <div class="row">
+        <div>
+          <div class="label">Total Revenue</div>
+          <p style="font-size:1.8rem; font-weight:700; color:var(--pino); margin:0.3rem 0;">$47.2M</p>
+          <p class="sub">+12% YoY growth</p>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="label">EBITDA Margin</div>
+          <p style="font-size:1.8rem; font-weight:700; color:var(--castano); margin:0.3rem 0;">28%</p>
+          <p class="sub">+2.1pp vs. FY2024</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:1.5rem;">
+      <strong>Key drivers:</strong> Service revenue growth (consulting), operational efficiency gains, increased billing rates across levels.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Market Position & Benchmarks -->
+<div class="slide">
+  <div>
+    <h1>Market Position & Competitive Benchmarks</h1>
+    <h2>DINN vs. industry peers (2025)</h2>
+    <div class="chart-grid">
+      <div class="chart-item">
+        <div class="chart-label">Revenue per Consultant</div>
+        <table style="margin-top:0.5rem;">
+          <tr>
+            <th>Firm</th>
+            <th>Rev/Consultant</th>
+            <th>vs. DINN</th>
+          </tr>
+          <tr>
+            <td>DINN</td>
+            <td>$580K</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Competitor A</td>
+            <td>$620K</td>
+            <td>+7%</td>
+          </tr>
+          <tr>
+            <td>Competitor B</td>
+            <td>$510K</td>
+            <td>-12%</td>
+          </tr>
+        </table>
+      </div>
+      <div class="chart-item">
+        <div class="chart-label">EBITDA Margin Benchmark</div>
+        <div class="chart" style="margin-top:0.5rem;">
+          <div class="bar" style="height:65%;"></div>
+          <div class="bar alt" style="height:72%;"></div>
+          <div class="bar light" style="height:58%;"></div>
+        </div>
+        <p style="font-size:0.75rem; margin-top:0.5rem; text-align:center; color:var(--gris2);">DINN • Comp A • Comp B</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Behavior-by-Level Analysis -->
+<div class="slide">
+  <div>
+    <h1>Behavior-by-Level Analysis</h1>
+    <h2>Performance, development & retention by consultant tier</h2>
+    <table style="margin-top:1rem;">
+      <tr>
+        <th>Level</th>
+        <th>Billable %</th>
+        <th>Avg. Project Size</th>
+        <th>Retention Rate</th>
+        <th>2026 Priority</th>
+      </tr>
+      <tr>
+        <td><strong>Partner</strong></td>
+        <td>62%</td>
+        <td>$2.1M</td>
+        <td>96%</td>
+        <td>Thought leadership</td>
+      </tr>
+      <tr>
+        <td><strong>Senior Consultant</strong></td>
+        <td>74%</td>
+        <td>$840K</td>
+        <td>91%</td>
+        <td>Skill development</td>
+      </tr>
+      <tr>
+        <td><strong>Consultant</strong></td>
+        <td>81%</td>
+        <td>$420K</td>
+        <td>78%</td>
+        <td>Mentoring + career paths</td>
+      </tr>
+      <tr>
+        <td><strong>Analyst</strong></td>
+        <td>68%</td>
+        <td>$180K</td>
+        <td>65%</td>
+        <td>Recruitment & onboarding</td>
+      </tr>
+    </table>
+    <div class="callout" style="margin-top:1rem;">
+      <strong>Insight:</strong> Mid-level consultants show highest billable time; analyst retention needs attention for pipeline health.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Brand Identity & Voice -->
+<div class="slide">
+  <div>
+    <h1>DINN Brand Identity</h1>
+    <h2>Market positioning, tone & client perception</h2>
+    <div class="rows" style="margin-top:1.5rem;">
+      <div class="row">
+        <div>
+          <h3>Core Brand Pillars</h3>
+          <ul style="margin-left:1.2rem; margin-top:0.7rem;">
+            <li><strong>Analytical Rigor</strong> — Data-driven problem solving</li>
+            <li><strong>Industry Expertise</strong> — Deep sector knowledge</li>
+            <li><strong>Trusted Partnership</strong> — Long-term client relationships</li>
+            <li><strong>Thought Leadership</strong> — Insights & publications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <h3>Tone & Messaging</h3>
+          <p style="margin-top:0.7rem;">
+            <strong>For prospects:</strong> "DINN brings clarity to complex challenges through rigorous analysis and proven expertise." 
+          </p>
+          <p style="margin-top:0.7rem;">
+            <strong>For teams:</strong> "We solve the toughest problems. You'll grow here."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Strategic Initiatives FY2026 -->
+<div class="slide">
+  <div>
+    <h1>FY2026 Strategic Roadmap</h1>
+    <h2>Three pillars driving growth & impact</h2>
+    <div class="cols" style="margin-top:1.5rem;">
+      <div class="col">
+        <h3>Pillar 1: Client Expansion</h3>
+        <div class="stack" style="margin-top:0.5rem;">
+          <p><strong>• Geographic reach</strong><br><span class="sub">Enter 2 new markets (APAC focus)</span></p>
+          <p><strong>• Sector deepening</strong><br><span class="sub">Expand FinTech and Energy practices</span></p>
+          <p><strong>• Account value</strong><br><span class="sub">Target $1M+ annual contracts</span></p>
+        </div>
+      </div>
+      <div class="col">
+        <h3>Pillar 2: People & Culture</h3>
+        <div class="stack" style="margin-top:0.5rem;">
+          <p><strong>• Hire 15 consultants</strong><br><span class="sub">Focus on senior hires & diversity</span></p>
+          <p><strong>• Retention programs</strong><br><span class="sub">Career ladders + mentorship</span></p>
+          <p><strong>• Leadership development</strong><br><span class="sub">Partner track clarity</span></p>
+        </div>
+      </div>
+      <div class="col">
+        <h3>Pillar 3: Capability Building</h3>
+        <div class="stack" style="margin-top:0.5rem;">
+          <p><strong>• Digital transformation</strong><br><span class="sub">AI/ML integration in projects</span></p>
+          <p><strong>• Thought leadership</strong><br><span class="sub">2 major research reports</span></p>
+          <p><strong>• Tech infrastructure</strong><br><span class="sub">New project management platform</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: KPIs & Success Metrics -->
+<div class="slide">
+  <div>
+    <h1>FY2026 Key Performance Indicators</h1>
+    <h2>How we measure progress against strategic initiatives</h2>
+    <div class="chart-grid" style="margin-top:1.5rem;">
+      <div class="chart-item">
+        <div class="chart-label">Revenue Target</div>
+        <p style="font-size:2rem; font-weight:700; color:var(--pino); margin:0.5rem 0;">$54M</p>
+        <p class="sub">+14% vs. FY2025</p>
+      </div>
+      <div class="chart-item">
+        <div class="chart-label">Headcount Growth</div>
+        <p style="font-size:2rem; font-weight:700; color:var(--castano); margin:0.5rem 0;">+15</p>
+        <p class="sub">From 82 to 97 consultants</p>
+      </div>
+      <div class="chart-item">
+        <div class="chart-label">Target EBITDA Margin</div>
+        <p style="font-size:2rem; font-weight:700; color:var(--fresno); margin:0.5rem 0;">31%</p>
+        <p class="sub">+3pp improvement</p>
+      </div>
+      <div class="chart-item">
+        <div class="chart-label">Client Retention</div>
+        <p style="font-size:2rem; font-weight:700; color:var(--pino); margin:0.5rem 0;">94%</p>
+        <p class="sub">Maintain strategic accounts</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: Risk & Mitigation -->
+<div class="slide">
+  <div>
+    <h1>Risk Assessment & Mitigation</h1>
+    <h2>Key risks and contingency plans</h2>
+    <table style="margin-top:1rem;">
+      <tr>
+        <th>Risk</th>
+        <th>Impact</th>
+        <th>Mitigation</th>
+      </tr>
+      <tr>
+        <td><strong>Talent retention</strong></td>
+        <td>High</td>
+        <td>Competitive comp review, career paths, mentorship</td>
+      </tr>
+      <tr>
+        <td><strong>Market slowdown</strong></td>
+        <td>Medium</td>
+        <td>Diversify sectors, expand product offerings</td>
+      </tr>
+      <tr>
+        <td><strong>Key client loss</strong></td>
+        <td>High</td>
+        <td>Relationship management, quarterly business reviews</td>
+      </tr>
+      <tr>
+        <td><strong>Hiring slowdown</strong></td>
+        <td>Medium</td>
+        <td>Build talent pipeline, increase referral programs</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 10: Q&A & Next Steps -->
+<div class="slide bg-pino">
+  <div style="text-align:center; justify-content:center; display:flex; flex-direction:column; align-items:center;">
+    <h1 style="font-size:2.5rem; margin-bottom:1rem;">Questions & Discussion</h1>
+    <p style="font-size:1rem; margin:1rem 0;">Board feedback on strategic priorities</p>
+    <p style="margin-top:2rem; font-size:0.9rem;">Next steps: Board approval of FY2026 budget and headcount plan</p>
+  </div>
+</div>
+
+<!-- ANNEX SLIDES (Slides 11–14) -->
+
+<!-- Annex 1: Detailed P&L -->
+<div class="slide">
+  <div>
+    <h1>Annex 1: FY2025 Detailed P&L</h1>
+    <h2>Revenue, operating expenses & profitability breakdown</h2>
+    <table style="margin-top:1rem; font-size:0.8rem;">
+      <tr>
+        <th>Line Item</th>
+        <th>FY2024</th>
+        <th>FY2025</th>
+        <th>Change</th>
+        <th>% of Revenue</th>
+      </tr>
+      <tr>
+        <td><strong>Total Revenue</strong></td>
+        <td>$42.1M</td>
+        <td>$47.2M</td>
+        <td>+$5.1M</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td>Consulting Services</td>
+        <td>$35.8M</td>
+        <td>$40.2M</td>
+        <td>+$4.4M</td>
+        <td>85%</td>
+      </tr>
+      <tr>
+        <td>Training & Workshops</td>
+        <td>$4.2M</td>
+        <td>$5.1M</td>
+        <td>+$0.9M</td>
+        <td>11%</td>
+      </tr>
+      <tr>
+        <td>Publications & IP</td>
+        <td>$2.1M</td>
+        <td>$1.9M</td>
+        <td>-$0.2M</td>
+        <td>4%</td>
+      </tr>
+      <tr style="border-top:2px solid var(--gris1);">
+        <td><strong>Cost of Services</strong></td>
+        <td><strong>$20.5M</strong></td>
+        <td><strong>$22.1M</strong></td>
+        <td><strong>+$1.6M</strong></td>
+        <td><strong>47%</strong></td>
+      </tr>
+      <tr>
+        <td>Consultant salaries</td>
+        <td>$18.2M</td>
+        <td>$19.8M</td>
+        <td>+$1.6M</td>
+        <td>42%</td>
+      </tr>
+      <tr>
+        <td>Benefits & payroll taxes</td>
+        <td>$2.3M</td>
+        <td>$2.3M</td>
+        <td>—</td>
+        <td>5%</td>
+      </tr>
+      <tr style="border-top:2px solid var(--gris1);">
+        <td><strong>Gross Profit</strong></td>
+        <td><strong>$21.6M</strong></td>
+        <td><strong>$25.1M</strong></td>
+        <td><strong>+$3.5M</strong></td>
+        <td><strong>53%</strong></td>
+      </tr>
+      <tr>
+        <td>Sales & Marketing</td>
+        <td>$4.8M</td>
+        <td>$5.2M</td>
+        <td>+$0.4M</td>
+        <td>11%</td>
+      </tr>
+      <tr>
+        <td>General & Admin</td>
+        <td>$3.7M</td>
+        <td>$3.9M</td>
+        <td>+$0.2M</td>
+        <td>8%</td>
+      </tr>
+      <tr>
+        <td>Technology & Infrastructure</td>
+        <td>$1.2M</td>
+        <td>$1.4M</td>
+        <td>+$0.2M</td>
+        <td>3%</td>
+      </tr>
+      <tr style="border-top:2px solid var(--gris1);">
+        <td><strong>EBITDA</strong></td>
+        <td><strong>$11.9M</strong></td>
+        <td><strong>$13.2M</strong></td>
+        <td><strong>+$1.3M</strong></td>
+        <td><strong>28%</strong></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Annex 2: Market Competitors -->
+<div class="slide">
+  <div>
+    <h1>Annex 2: Competitive Landscape</h1>
+    <h2>Market share, positioning & differentiation</h2>
+    <table style="margin-top:1rem; font-size:0.8rem;">
+      <tr>
+        <th>Firm</th>
+        <th>Focus</th>
+        <th>Size (Rev)</th>
+        <th>Strength</th>
+        <th>vs. DINN</th>
+      </tr>
+      <tr>
+        <td><strong>DINN</strong></td>
+        <td>Mid-market, cross-sector</td>
+        <td>$47.2M</td>
+        <td>Agility, trusted relationships</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>Competitor A</strong></td>
+        <td>Enterprise, digital transform</td>
+        <td>$280M</td>
+        <td>Scale, brand recognition</td>
+        <td>Larger, less personal</td>
+      </tr>
+      <tr>
+        <td><strong>Competitor B</strong></td>
+        <td>Boutique, strategy</td>
+        <td>$32M</td>
+        <td>Thought leadership, prestige</td>
+        <td>Smaller reach, higher rates</td>
+      </tr>
+      <tr>
+        <td><strong>Competitor C</strong></td>
+        <td>Operations, cost reduction</td>
+        <td>$85M</td>
+        <td>Efficiency, analytics tools</td>
+        <td>Broader practice, lower margins</td>
+      </tr>
+    </table>
+    <div class="callout" style="margin-top:1.5rem;">
+      <strong>Positioning:</strong> DINN competes as the "trusted mid-market partner" with deep expertise, not on scale or brand prestige. Differentiation = relationships + analytical rigor.
+    </div>
+  </div>
+</div>
+
+<!-- Annex 3: Team Composition -->
+<div class="slide">
+  <div>
+    <h1>Annex 3: Team Composition & Development</h1>
+    <h2>Current headcount, hiring plan & career progression</h2>
+    <div class="chart-grid" style="margin-top:1.5rem;">
+      <div class="chart-item">
+        <div class="chart-label">Current Headcount (FY2025)</div>
+        <table style="margin-top:0.5rem;">
+          <tr>
+            <th>Level</th>
+            <th>Count</th>
+            <th>%</th>
+          </tr>
+          <tr>
+            <td>Partner</td>
+            <td>4</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Senior Consultant</td>
+            <td>18</td>
+            <td>22%</td>
+          </tr>
+          <tr>
+            <td>Consultant</td>
+            <td>42</td>
+            <td>51%</td>
+          </tr>
+          <tr>
+            <td>Analyst</td>
+            <td>18</td>
+            <td>22%</td>
+          </tr>
+          <tr style="border-top:2px solid var(--gris1);">
+            <td><strong>Total</strong></td>
+            <td><strong>82</strong></td>
+            <td><strong>100%</strong></td>
+          </tr>
+        </table>
+      </div>
+      <div class="chart-item">
+        <div class="chart-label">FY2026 Hiring Plan</div>
+        <table style="margin-top:0.5rem;">
+          <tr>
+            <th>Level</th>
+            <th>New Hires</th>
+            <th>FY2026 Total</th>
+          </tr>
+          <tr>
+            <td>Partner</td>
+            <td>1</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Senior Consultant</td>
+            <td>5</td>
+            <td>23</td>
+          </tr>
+          <tr>
+            <td>Consultant</td>
+            <td>7</td>
+            <td>49</td>
+          </tr>
+          <tr>
+            <td>Analyst</td>
+            <td>2</td>
+            <td>20</td>
+          </tr>
+          <tr style="border-top:2px solid var(--gris1);">
+            <td><strong>Total</strong></td>
+            <td><strong>15</strong></td>
+            <td><strong>97</strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:1.5rem;">
+      <strong>Development focus:</strong> Accelerate Senior Consultant promotions; establish clear Partner track; improve analyst-to-consultant conversion rate to 70% (currently 60%).
+    </div>
+  </div>
+</div>
+
+<!-- Annex 4: Summary & Board Actions -->
+<div class="slide bg-pino">
+  <div>
+    <h1>Annex 4: Summary & Board Actions</h1>
+    <div style="margin-top:2rem;">
+      <h2 style="color:var(--fresno); font-weight:600; margin-bottom:1.5rem;">Recommended Board Actions</h2>
+      <div class="stack" style="gap:1rem;">
+        <p><strong>1. Approve FY2026 Budget</strong><br><span style="color:var(--fresno);">Revenue target $54M, EBITDA margin 31%, headcount +15</span></p>
+        <p><strong>2. Authorize Geographic Expansion</strong><br><span style="color:var(--fresno);">Approve APAC market entry with $500K investment</span></p>
+        <p><strong>3. Establish Partner Track</strong><br><span style="color:var(--fresno);">Clear advancement criteria and timeline for senior team</span></p>
+        <p><strong>4. Approve Talent Retention Program</strong><br><span style="color:var(--fresno);">Competitive compensation review and career development initiatives</span></p>
+        <p><strong>5. Review Brand & Messaging</strong><br><span style="color:var(--fresno);">Endorse DINN positioning as trusted mid-market partner</span></p>
+      </div>
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--fresno); font-size:0.9rem;">
+        <p>Questions? Contact: Arturo Camargo (CEO) | DINN Board Office</p>
+        <p>Document prepared: March 2026 | Confidential — Board Only</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(cur-1)">← Prev</button>
+  <button onclick="go(cur+1)">Next →</button>
+</div>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let cur = 0;
+
+function go(n){
+  if(n<0)n=0;
+  if(n>=slides.length)n=slides.length-1;
+  slides[cur].classList.remove('active');
+  slides[cur=n].classList.add('active');
+}
+
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}
+  if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}
+});
+slides[0].classList.add('active');
+</script>
+</body>
+</html>
