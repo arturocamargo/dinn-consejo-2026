@@ -51,626 +51,932 @@ h1 { font-size:2.2rem; font-weight:700; color:var(--pino); line-height:1.3; marg
 h2 { font-size:1.05rem; font-weight:400; color:var(--gris1); line-height:1.5; margin-bottom:1rem; }
 h3 { font-size:0.75rem; font-weight:600; color:var(--castano); letter-spacing:0.12em; text-transform:uppercase; margin:0.7rem 0 0.3rem; }
 p, li { font-size:0.92rem; line-height:1.6; color:var(--olmo); }
-.label { font-size:0.65rem; font-weight:600; color:var(--castano); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem; }
-.sub { font-size:0.85rem; font-weight:400; color:var(--gris2); line-height:1.5; }
+ul { padding-left:1.3rem; margin-bottom:0.5rem; }
+li { margin-bottom:0.2rem; }
+strong { font-weight:600; }
 
-/* ── Layout blocks ── */
-.slide > div:first-child { flex:1; display:flex; flex-direction:column; justify-content:flex-start; }
-.slide > div:last-child { flex:0; margin-top:auto; padding-top:1.2rem; border-top:1px solid var(--gris3); }
-.rows { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
-.row { display:flex; flex-direction:column; justify-content:space-between; }
-.cols { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem; }
-.col { }
-.stack { display:flex; flex-direction:column; gap:0.7rem; }
+/* ── Cards ── */
+.cards { display:grid; gap:0.75rem; margin:0.4rem 0; }
+.c2 { grid-template-columns:repeat(2,1fr); }
+.c3 { grid-template-columns:repeat(3,1fr); }
+.c4 { grid-template-columns:repeat(4,1fr); }
+.c5 { grid-template-columns:repeat(5,1fr); }
+.card {
+  background:var(--blanco);
+  border:1.5px solid var(--gris3);
+  border-radius:12px;
+  padding:0.9rem 1rem;
+}
+.card.accent { background:var(--olivo); border-color:transparent; }
+.card .num { font-size:2.2rem; font-weight:700; line-height:1; color:var(--pino); }
+.card .label { font-size:0.78rem; font-weight:600; color:var(--olmo); margin-top:0.1rem; }
+.card .sub { font-size:0.65rem; color:var(--gris2); font-weight:400; }
+.card .body { font-size:0.72rem; color:var(--gris1); margin-top:0.2rem; line-height:1.5; }
 
-/* ── Charts & Visuals ── */
-.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:1rem; }
-.chart-item { }
-.chart-label { font-size:0.75rem; font-weight:600; color:var(--gris1); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.08em; }
-.chart { width:100%; height:200px; background:var(--olivo); border-radius:0.3rem; display:flex; align-items:flex-end; justify-content:space-around; padding:1rem; gap:0.3rem; }
-.bar { background:var(--pino); border-radius:0.2rem; flex:1; }
-.bar.alt { background:var(--castano); }
-.bar.light { background:var(--fresno); }
+/* ── Band / Footer ── */
+.band {
+  background:var(--olivo);
+  border-radius:8px;
+  padding:0.55rem 1.2rem;
+  text-align:center;
+  font-weight:600;
+  font-size:0.85rem;
+  color:var(--pino);
+  margin:0.45rem 0;
+}
+.footer-bar {
+  background:var(--olivo);
+  border-radius:8px;
+  padding:0.55rem 1.2rem;
+  font-size:0.75rem;
+  color:var(--pino);
+  margin-top:auto;
+  text-align:center;
+  font-weight:400;
+}
+.footer-bar strong { color:var(--olmo); font-weight:600; }
 
-/* ── Tables ── */
-table { width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:0.5rem; }
-td, th { padding:0.6rem 0.4rem; text-align:left; border-bottom:1px solid var(--gris3); }
-th { font-weight:600; color:var(--pino); }
-tr:nth-child(even) { background:var(--olivo); }
+/* ── Pipeline ── */
+.pipe-item {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1.5px solid var(--gris3);
+  padding:0.6rem 0;
+}
+.pipe-item:last-child { border-bottom:none; }
+.pipe-name { font-weight:600; font-size:0.88rem; color:var(--olmo); }
+.pipe-desc { font-size:0.72rem; color:var(--gris1); margin-top:0.05rem; }
+.pipe-when {
+  font-size:0.62rem;
+  font-weight:600;
+  color:var(--blanco);
+  background:var(--pino);
+  padding:0.2rem 0.65rem;
+  border-radius:99px;
+  white-space:nowrap;
+}
 
-/* ── Callout / Highlight ── */
-.callout { background:var(--olivo); padding:1rem 1.2rem; border-left:3px solid var(--pino); border-radius:0.2rem; margin:0.8rem 0; }
-.callout strong { color:var(--pino); }
+/* ── Quote ── */
+.quote {
+  border-left:3px solid var(--castano);
+  padding-left:1rem;
+  font-style:italic;
+  color:var(--gris1);
+  font-size:0.9rem;
+  margin:0.5rem 0;
+}
 
-/* ── Slide-specific ── */
-.title-slide { justify-content:center; align-items:center; text-align:center; }
-.title-slide h1 { font-size:3rem; margin-bottom:0.5rem; }
-.title-slide .sub { font-size:1rem; }
+/* ── Misc ── */
+.page { position:absolute; bottom:0.8rem; right:2rem; font-size:0.6rem; color:var(--gris2); font-weight:500; }
+.slide-footer-text { position:absolute; bottom:0.8rem; left:0; right:0; text-align:center; font-size:0.52rem; color:rgba(255,255,255,0.45); letter-spacing:0.3em; text-transform:uppercase; font-weight:400; }
+.dinn-badge { position:absolute; bottom:0.8rem; left:2rem; font-size:0.58rem; color:var(--gris2); font-weight:500; letter-spacing:0.04em; }
 
-.list-slide ul { margin:1rem 0 0 1.5rem; padding:0; }
-.list-slide li { margin-bottom:0.5rem; }
-.list-slide li strong { color:var(--pino); }
+/* ── DINN Logo ── */
+.logo-dinn { display:inline-flex; align-items:center; gap:0.6rem; }
+.logo-dinn-text { font-weight:800; letter-spacing:0.04em; }
+
+/* ── Decorative shapes ── */
+.leaf-deco { position:absolute; opacity:0.06; pointer-events:none; }
 
 /* ── Navigation ── */
-.nav { position:fixed; bottom:20px; right:30px; display:flex; gap:10px; }
-button { padding:8px 16px; background:var(--pino); color:var(--blanco); border:none; border-radius:3px; cursor:pointer; font-size:0.9rem; font-weight:500; }
-button:hover { background:var(--olmo); }
-
-/* ── Print ── */
-@media print {
-  body { background:var(--blanco); }
-  .slide { opacity:1 !important; page-break-after:always; margin:0; padding:2rem; box-shadow:none; }
-  .nav { display:none; }
+.nav {
+  position:fixed; bottom:0.8rem; left:50%; transform:translateX(-50%);
+  display:flex; gap:0.5rem; align-items:center; z-index:100;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(8px);
+  padding:0.35rem 0.9rem;
+  border-radius:99px;
 }
+.nav button {
+  background:none; border:none; cursor:pointer;
+  font-size:0.7rem; color:rgba(255,255,255,0.6); padding:0.15rem 0.3rem;
+  transition:color 0.2s;
+}
+.nav button:hover { color:#fff; }
+.dots { display:flex; gap:0.25rem; }
+.dot {
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(255,255,255,0.3); cursor:pointer;
+  transition:all 0.25s ease;
+}
+.dot.active { background:var(--fresno); width:18px; border-radius:3px; }
+.counter { font-size:0.55rem; color:rgba(255,255,255,0.5); min-width:2.5rem; text-align:center; font-weight:500; }
 </style>
 </head>
 <body>
-<div class="deck">
+<div class="deck" id="deck">
 
-<!-- Slide 1: Title -->
-<div class="slide bg-pino title-slide">
-  <div>
-    <h1>DINN 2026</h1>
-    <h2>Board of Directors</h2>
-    <p style="margin-top:2rem; font-size:0.95rem; line-height:1.8;">
-      Strategic Review & Brand Positioning<br>
-      April 2026 Board Meeting
-    </p>
+<!-- ══ 1. COVER ══════════════════════════════════════════════════════ -->
+<div class="slide bg-pino" id="s1" style="justify-content:center; padding:4rem 5.5rem">
+  <svg class="leaf-deco" style="top:-60px; right:-40px; width:420px; height:420px" viewBox="0 0 200 200">
+    <ellipse cx="160" cy="60" rx="90" ry="50" fill="white" transform="rotate(25 160 60)"/>
+    <ellipse cx="130" cy="130" rx="70" ry="35" fill="white" transform="rotate(-15 130 130)"/>
+  </svg>
+
+  <div class="logo-dinn" style="margin-bottom:2rem">
+    <svg viewBox="0 0 40 40" width="52" height="52">
+      <circle cx="20" cy="20" r="19" fill="none" stroke="white" stroke-width="2"/>
+      <path d="M20 1 A19 19 0 0 1 20 39 Z" fill="white"/>
+    </svg>
+    <span class="logo-dinn-text" style="color:white; font-size:1.8rem">DINN</span>
   </div>
-</div>
 
-<!-- Slide 2: Agenda -->
-<div class="slide">
-  <div>
-    <h1>Agenda</h1>
-    <h2>10-Slide Deck + Annexes</h2>
-    <div class="list-slide" style="margin-top:2rem;">
-      <ul>
-        <li><strong>1. FY2025 Financial Summary</strong> — P&L, margins, key drivers</li>
-        <li><strong>2. Market Position</strong> — Competitive benchmarks, growth rates</li>
-        <li><strong>3. Behavior-by-Level Analysis</strong> — Senior, mid, junior performance</li>
-        <li><strong>4. Brand Identity & Voice</strong> — DINN positioning in market</li>
-        <li><strong>5. Strategic Initiatives</strong> — FY2026 roadmap & metrics</li>
-        <li><strong>6–10. Detailed Annexes</strong> — Deep dives, case studies, financials</li>
+  <h1 style="color:white; font-size:1.65rem; font-weight:400; margin-bottom:0.6rem; max-width:700px; line-height:1.4">
+    La plataforma de inversión 100% digital de Actinver<br>para el <strong style="font-weight:700">inversionista emergente.</strong>
+  </h1>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; max-width:680px">
+    <div>
+      <h3 style="color:var(--fresno); font-size:0.72rem">Segmento objetivo</h3>
+      <ul style="list-style:none; padding:0; margin-top:0.3rem">
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">$5K – $200K</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">No asesorados</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Digital-first</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem">Simplicidad y control</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--fresno); font-size:0.72rem">Rol estratégico</h3>
+      <ul style="list-style:none; padding:0; margin-top:0.3rem">
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Segmento masivo digital</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Relación directa con cliente</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Plataforma escalable</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem">Bajo costo marginal</li>
       </ul>
     </div>
   </div>
+
+  <div class="quote" style="margin-top:auto; border-left-color:var(--fresno); color:var(--fresno); max-width:550px; font-size:0.95rem">
+    El éxito no se mide por descargas. Se mide por valor económico por cliente.
+  </div>
+  <div class="slide-footer-text">ACTINVER · CONFIDENCIAL · ABRIL 2026</div>
 </div>
 
-<!-- Slide 3: FY2025 Financial Summary -->
-<div class="slide">
-  <div>
-    <h1>FY2025 Financial Summary</h1>
-    <h2>Revenue, profitability & growth trajectory</h2>
-    <div class="rows" style="margin-top:1.5rem;">
-      <div class="row">
-        <div>
-          <div class="label">Total Revenue</div>
-          <p style="font-size:1.8rem; font-weight:700; color:var(--pino); margin:0.3rem 0;">$47.2M</p>
-          <p class="sub">+12% YoY growth</p>
-        </div>
-      </div>
-      <div class="row">
-        <div>
-          <div class="label">EBITDA Margin</div>
-          <p style="font-size:1.8rem; font-weight:700; color:var(--castano); margin:0.3rem 0;">28%</p>
-          <p class="sub">+2.1pp vs. FY2024</p>
-        </div>
-      </div>
+<!-- ══ 2. OPORTUNIDAD ════════════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <h1>Tamaño de oportunidad</h1>
+  <h2>El inversionista emergente en México</h2>
+
+  <!-- The gap -->
+  <div class="cards c3" style="margin-top:0.3rem">
+    <div class="card accent" style="text-align:center; padding:1rem">
+      <div class="num" style="font-size:2.8rem">70M+</div>
+      <div class="label" style="color:var(--pino)">usan servicios fintech</div>
+      <div class="sub" style="font-size:0.62rem; margin-top:0.2rem">Statista / reportes de industria 2025</div>
     </div>
-    <div class="callout" style="margin-top:1.5rem;">
-      <strong>Key drivers:</strong> Service revenue growth (consulting), operational efficiency gains, increased billing rates across levels.
+    <div class="card accent" style="text-align:center; padding:1rem">
+      <div class="num" style="font-size:2.8rem">22M</div>
+      <div class="label" style="color:var(--pino)">cuentas de inversión abiertas</div>
+      <div class="sub" style="font-size:0.62rem; margin-top:0.2rem">CNBV 2025 · alta concentración en pocos jugadores</div>
+    </div>
+    <div class="card" style="text-align:center; padding:1rem; border:2px solid var(--pino)">
+      <div class="num" style="font-size:2.8rem">~3M</div>
+      <div class="label" style="color:var(--pino)">invierten activamente cada mes</div>
+      <div class="sub" style="font-size:0.62rem; margin-top:0.2rem">Cuentas activas mensuales · CNBV / GBM</div>
     </div>
   </div>
+
+  <div class="band" style="margin-top:0.5rem">DINN hoy: <strong>201K clientes = ~7% de los inversionistas activos.</strong> La brecha entre usuario digital e inversionista activo es nuestro mercado.</div>
+
+  <h3>El segmento que buscamos</h3>
+  <div class="cards c4" style="margin-top:0.2rem">
+    <div class="card">
+      <div class="label">Digital-first</div>
+      <div class="body">Resuelven sus finanzas desde una app. Ya son 76.5% con algún producto financiero (ENIF 2024).</div>
+    </div>
+    <div class="card">
+      <div class="label">Simplicidad y control</div>
+      <div class="body">Buscan claridad, no complejidad. No quieren asesor — quieren herramientas.</div>
+    </div>
+    <div class="card">
+      <div class="label">Montos $5K – $200K</div>
+      <div class="body">Inician pequeño con potencial de crecimiento. El saldo promedio sube con confianza.</div>
+    </div>
+    <div class="card">
+      <div class="label">En formación</div>
+      <div class="body">No son inversionistas maduros. Son la siguiente generación patrimonial.</div>
+    </div>
+  </div>
+
+  <div class="footer-bar">DINN permite a Actinver capturar al inversionista digital y construir relación patrimonial temprana — a bajo costo marginal.</div>
+  <div class="page">2 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
 </div>
 
-<!-- Slide 4: Market Position & Benchmarks -->
-<div class="slide">
-  <div>
-    <h1>Market Position & Competitive Benchmarks</h1>
-    <h2>DINN vs. industry peers (2025)</h2>
-    <div class="chart-grid">
-      <div class="chart-item">
-        <div class="chart-label">Revenue per Consultant</div>
-        <table style="margin-top:0.5rem;">
-          <tr>
-            <th>Firm</th>
-            <th>Rev/Consultant</th>
-            <th>vs. DINN</th>
-          </tr>
-          <tr>
-            <td>DINN</td>
-            <td>$580K</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Competitor A</td>
-            <td>$620K</td>
-            <td>+7%</td>
-          </tr>
-          <tr>
-            <td>Competitor B</td>
-            <td>$510K</td>
-            <td>-12%</td>
-          </tr>
-        </table>
+<!-- ══ 3. DIAGNÓSTICO + OPORTUNIDAD ═════════════════════════════════ -->
+<div class="slide" id="s3">
+  <h1>Diagnóstico actual</h1>
+  <h2>DINN ya tiene escala. El siguiente paso es profundizarla.</h2>
+
+  <div class="cards c4">
+    <div class="card" style="text-align:center; padding:0.8rem 0.6rem">
+      <div class="num" style="font-size:2.4rem">201K</div>
+      <div class="label">Clientes activos</div>
+      <div class="sub">cierre feb '26</div>
+    </div>
+    <div class="card" style="text-align:center; padding:0.8rem 0.6rem">
+      <div class="num" style="font-size:2.4rem">0.53%</div>
+      <div class="label">Churn mensual</div>
+      <div class="sub">≈6% anual · neobancos promedian 22%. Revisando metodología de medición.</div>
+    </div>
+    <div class="card" style="text-align:center; padding:0.8rem 0.6rem">
+      <div class="num" style="font-size:2.4rem">~$1,250M</div>
+      <div class="label">AUM total</div>
+      <div class="sub">feb '26</div>
+    </div>
+    <div class="card" style="text-align:center; padding:0.8rem 0.6rem">
+      <div class="num" style="font-size:2.4rem">$6,227</div>
+      <div class="label">Saldo promedio</div>
+      <div class="sub">era $2,434 en 2024 · crecimiento <strong style="color:var(--pino)">2.56x</strong></div>
+    </div>
+  </div>
+
+  <div class="band">La base está construida. Hay una brecha entre tenencia y actividad — y eso es oportunidad.</div>
+
+  <div class="cards c4">
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">80%</div>
+      <div class="label" style="color:var(--pino)">clientes con saldo &lt; $1K</div>
+      <div class="body" style="color:var(--pino)">171K clientes con $103 promedio. Solo 11% opera. Representan 1% del AUM.</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">7%</div>
+      <div class="label" style="color:var(--pino)">clientes con saldo &gt; $20K</div>
+      <div class="body" style="color:var(--pino)">15K clientes. Operan al 68-90%. Generan el 91% del AUM.</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">8x</div>
+      <div class="label" style="color:var(--pino)">más engagement: $100K+ vs &lt; $1K</div>
+      <div class="body" style="color:var(--pino)">90% opera en $100K+ vs 11% en &lt; $1K. 61% refiere vs 8%.</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">6%</div>
+      <div class="label" style="color:var(--pino)">usa TDD (total)</div>
+      <div class="body" style="color:var(--pino)">Bajo en todos los niveles. Infra lista, falta adopción.</div>
+    </div>
+  </div>
+
+  <div class="footer-bar">El trabajo de 2026 no es adquirir — es <strong>mover clientes hacia arriba.</strong> Si 10% de &lt; $1K sube a $1K–$5K = +$35M AUM y 5,000 traders nuevos.</div>
+  <div class="page">3 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
+</div>
+
+<!-- ══ 4. MODELO — FLYWHEEL ══════════════════════════════════════════ -->
+<div class="slide" id="s4">
+  <h1>Cómo funciona el modelo DINN</h1>
+  <h2>Un flywheel — tres motores que se refuerzan entre sí.</h2>
+
+  <div style="display:flex; align-items:center; justify-content:center; flex:1; gap:4rem; margin-top:0.5rem">
+    <!-- Flywheel -->
+    <div style="position:relative; width:380px; height:380px; flex-shrink:0">
+      <svg viewBox="0 0 380 380" width="380" height="380" style="position:absolute; inset:0">
+        <defs>
+          <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="var(--castano)"/>
+          </marker>
+        </defs>
+        <circle cx="190" cy="195" r="135" fill="none" stroke="var(--olivo)" stroke-width="30" opacity="0.5"/>
+        <path d="M 190 55 A 140 140 0 0 1 310 240" fill="none" stroke="var(--castano)" stroke-width="3" marker-end="url(#arr)"/>
+        <path d="M 295 260 A 140 140 0 0 1 85 260" fill="none" stroke="var(--castano)" stroke-width="3" marker-end="url(#arr)"/>
+        <path d="M 70 240 A 140 140 0 0 1 175 55" fill="none" stroke="var(--castano)" stroke-width="3" marker-end="url(#arr)"/>
+      </svg>
+
+      <div style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); text-align:center">
+        <div style="background:var(--pino); color:white; padding:0.4rem 1rem; border-radius:8px; font-weight:600; font-size:0.82rem; white-space:nowrap">Educación Financiera</div>
+        <div style="font-size:0.68rem; color:var(--gris1); margin-top:0.25rem">Motor de confianza</div>
       </div>
-      <div class="chart-item">
-        <div class="chart-label">EBITDA Margin Benchmark</div>
-        <div class="chart" style="margin-top:0.5rem;">
-          <div class="bar" style="height:65%;"></div>
-          <div class="bar alt" style="height:72%;"></div>
-          <div class="bar light" style="height:58%;"></div>
-        </div>
-        <p style="font-size:0.75rem; margin-top:0.5rem; text-align:center; color:var(--gris2);">DINN • Comp A • Comp B</p>
+      <div style="position:absolute; bottom:18px; right:-5px; text-align:center; width:160px">
+        <div style="background:var(--pino); color:white; padding:0.4rem 1rem; border-radius:8px; font-weight:600; font-size:0.82rem">Transaccionalidad</div>
+        <div style="font-size:0.68rem; color:var(--gris1); margin-top:0.25rem">Motor de hábito</div>
+      </div>
+      <div style="position:absolute; bottom:18px; left:-5px; text-align:center; width:160px">
+        <div style="background:var(--pino); color:white; padding:0.4rem 1rem; border-radius:8px; font-weight:600; font-size:0.82rem">Inversión</div>
+        <div style="font-size:0.68rem; color:var(--gris1); margin-top:0.25rem">Motor económico</div>
+      </div>
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-48%); text-align:center">
+        <div style="font-weight:700; font-size:1.25rem; color:var(--pino); line-height:1.3">Valor por<br>cliente</div>
+      </div>
+    </div>
+
+    <!-- Detail -->
+    <div style="max-width:340px">
+      <div style="margin-bottom:1.5rem; padding-left:1rem; border-left:3px solid var(--castano)">
+        <div style="font-weight:600; font-size:0.88rem; color:var(--olmo)">Educación → Confianza → Inversión</div>
+        <div style="font-size:0.78rem; color:var(--gris1); margin-top:0.2rem">Clientes &lt; $1K operan al 11%. Clientes &gt; $5K operan al 49-90%. Educación es el puente.</div>
+      </div>
+      <div style="margin-bottom:1.5rem; padding-left:1rem; border-left:3px solid var(--castano)">
+        <div style="font-weight:600; font-size:0.88rem; color:var(--olmo)">Transaccionalidad → Hábito → Retención</div>
+        <div style="font-size:0.78rem; color:var(--gris1); margin-top:0.2rem">TDD al 4-15% en todos los niveles. Oportunidad transversal sin explotar.</div>
+      </div>
+      <div style="padding-left:1rem; border-left:3px solid var(--castano)">
+        <div style="font-weight:600; font-size:0.88rem; color:var(--olmo)">Inversión → AUM → Ingreso</div>
+        <div style="font-size:0.78rem; color:var(--gris1); margin-top:0.2rem">Clientes &gt; $20K = 7% de la base, 91% del AUM. El valor crece exponencialmente con el saldo.</div>
       </div>
     </div>
   </div>
+
+  <div class="footer-bar"><strong>El flywheel:</strong> Más educación → más confianza → más inversión → más actividad → mayor valor por cliente</div>
+  <div class="page">4 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
 </div>
 
-<!-- Slide 5: Behavior-by-Level Analysis -->
-<div class="slide">
-  <div>
-    <h1>Behavior-by-Level Analysis</h1>
-    <h2>Performance, development & retention by consultant tier</h2>
-    <table style="margin-top:1rem;">
-      <tr>
-        <th>Level</th>
-        <th>Billable %</th>
-        <th>Avg. Project Size</th>
-        <th>Retention Rate</th>
-        <th>2026 Priority</th>
-      </tr>
-      <tr>
-        <td><strong>Partner</strong></td>
-        <td>62%</td>
-        <td>$2.1M</td>
-        <td>96%</td>
-        <td>Thought leadership</td>
-      </tr>
-      <tr>
-        <td><strong>Senior Consultant</strong></td>
-        <td>74%</td>
-        <td>$840K</td>
-        <td>91%</td>
-        <td>Skill development</td>
-      </tr>
-      <tr>
-        <td><strong>Consultant</strong></td>
-        <td>81%</td>
-        <td>$420K</td>
-        <td>78%</td>
-        <td>Mentoring + career paths</td>
-      </tr>
-      <tr>
-        <td><strong>Analyst</strong></td>
-        <td>68%</td>
-        <td>$180K</td>
-        <td>65%</td>
-        <td>Recruitment & onboarding</td>
-      </tr>
+<!-- ══ 5. NORTH STAR ═════════════════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <h1>Cómo medimos el éxito</h1>
+  <h2>Una sola métrica que alinea solución con valor económico.</h2>
+
+  <div class="card" style="margin:0.5rem 0; background:var(--olivo); border-color:transparent; padding:1.3rem 1.8rem">
+    <h3 style="margin:0 0 0.3rem; color:var(--pino); font-size:0.72rem">NORTH STAR METRIC</h3>
+    <p style="font-weight:700; font-size:1.2rem; color:var(--olmo); line-height:1.35">% de usuarios con ≥ $10,000 AUM que realizan una acción de valor mensual</p>
+    <div style="display:flex; gap:1.5rem; margin-top:0.6rem; align-items:center">
+      <div style="background:var(--blanco); border-radius:8px; padding:0.4rem 0.9rem; display:inline-flex; align-items:baseline; gap:0.4rem">
+        <span style="font-size:0.65rem; color:var(--gris1); font-weight:500">HOY</span>
+        <span style="font-size:1.1rem; font-weight:700; color:var(--castano)">TBD</span>
+      </div>
+      <span style="font-size:0.7rem; color:var(--gris2)">Línea base en construcción con taggeo de flujos (H1 2026)</span>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:0.8rem; flex:1">
+    <div>
+      <h3>Acciones de valor</h3>
+      <ul style="margin-top:0.3rem">
+        <li style="font-size:0.9rem; margin-bottom:0.3rem">Invertir</li>
+        <li style="font-size:0.9rem; margin-bottom:0.3rem">Depositar</li>
+        <li style="font-size:0.9rem; margin-bottom:0.3rem">Usar tarjeta de débito</li>
+        <li style="font-size:0.9rem; margin-bottom:0.3rem">Consumir educación financiera</li>
+        <li style="font-size:0.9rem">Referir</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Si esta métrica mejora…</h3>
+      <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.4rem">
+        <div style="display:flex; align-items:center; gap:0.6rem">
+          <span style="background:var(--pino); color:white; font-size:0.72rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:4px">↑</span>
+          <span style="font-size:0.92rem; font-weight:500">AUM promedio</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.6rem">
+          <span style="background:var(--pino); color:white; font-size:0.72rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:4px">↑</span>
+          <span style="font-size:0.92rem; font-weight:500">ARPU</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.6rem">
+          <span style="background:var(--pino); color:white; font-size:0.72rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:4px">↑</span>
+          <span style="font-size:0.92rem; font-weight:500">Retención</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.6rem">
+          <span style="background:var(--pino); color:white; font-size:0.72rem; font-weight:700; padding:0.2rem 0.55rem; border-radius:4px">↑</span>
+          <span style="font-size:0.92rem; font-weight:500">Ingresos recurrentes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page">5 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
+</div>
+
+<!-- ══ 6. PIPELINE H1 ════════════════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <h3 style="margin-top:0">Roadmap</h3>
+  <h1>H1 2026 · Primer Semestre</h1>
+
+  <div style="margin-top:0.6rem; flex:1; display:flex; flex-direction:column; justify-content:center">
+    <div class="pipe-item"><div><div class="pipe-name">Pago de servicios <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">TRANSACCIONALIDAD</span></div><div class="pipe-desc">Ampliar funcionalidades transaccionales de valor al usuario.</div></div><div class="pipe-when">Q2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Taggeo de flujos <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INFRAESTRUCTURA</span></div><div class="pipe-desc">Medición, análisis y seguimiento del comportamiento digital.</div></div><div class="pipe-when">H1 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Homologación visual / narrativa <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">EDUCACIÓN</span></div><div class="pipe-desc">Consistencia de marca y claridad de comunicación.</div></div><div class="pipe-when">H1 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Regulatorios <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INVERSIÓN</span></div><div class="pipe-desc">Cumplimiento normativo y continuidad operativa. Ej. Modelo No Asesorado.</div></div><div class="pipe-when">Jul 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Mejoras tecnológicas <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INFRAESTRUCTURA</span></div><div class="pipe-desc">Reducir fricción, errores y optimizar flujos de la app.</div></div><div class="pipe-when">H1 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Actualizar Cashback V3 <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">TRANSACCIONALIDAD</span></div><div class="pipe-desc">Versión con más establecimientos y funcionalidades.</div></div><div class="pipe-when" style="background:var(--castano)">Lanzado</div></div>
+  </div>
+  <div class="page">6 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
+</div>
+
+<!-- ══ 7. PIPELINE H2 ════════════════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <h3 style="margin-top:0">Roadmap</h3>
+  <h1>H2 2026 · Segundo Semestre</h1>
+
+  <div style="margin-top:0.6rem; flex:1; display:flex; flex-direction:column; justify-content:center">
+    <div class="pipe-item"><div><div class="pipe-name">Desbloqueo de Token <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INFRAESTRUCTURA</span></div><div class="pipe-desc">Reducir fricción operativa y mejorar autogestión del cliente. Mejorar NPS.</div></div><div class="pipe-when">H2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Piloto de Educación Financiera <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">EDUCACIÓN</span></div><div class="pipe-desc">Contenidos para impulsar entendimiento financiero y engagement.</div></div><div class="pipe-when">H2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Tasa Fija / CETES <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INVERSIÓN</span></div><div class="pipe-desc">Alternativa de inversión de tasa fija para robustecer propuesta de valor.</div></div><div class="pipe-when">H2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Plan Personal de Retiro (PPR) <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INVERSIÓN</span></div><div class="pipe-desc">Orientado al ahorro de largo plazo. Revisar viabilidad dev en SAP.</div></div><div class="pipe-when">H2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">WhatsApp <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">TRANSACCIONALIDAD</span></div><div class="pipe-desc">Canal de contacto, atención y acompañamiento.</div></div><div class="pipe-when">H2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Onboarding N4 <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INFRAESTRUCTURA</span></div><div class="pipe-desc">Mejor experiencia de entrada y path de inversión más claro.</div></div><div class="pipe-when">H2 2026</div></div>
+    <div class="pipe-item"><div><div class="pipe-name">Rediseño Experiencia de Inversión <span style="font-size:0.55rem; font-weight:400; color:var(--castano); margin-left:0.4rem">INVERSIÓN</span></div><div class="pipe-desc">Explicaciones más claras del path que los usuarios deberían elegir.</div></div><div class="pipe-when">H2 2026</div></div>
+  </div>
+  <div class="page">7 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
+</div>
+
+<!-- ══ 8. QUÉ ESPERAMOS ══════════════════════════════════════════════ -->
+<div class="slide" id="s8">
+  <h1>Qué esperamos lograr</h1>
+  <h2>Si ejecutamos correctamente…</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; flex:1; align-content:center; margin-top:0.5rem">
+    <!-- Left: for the client -->
+    <div>
+      <h3>Para el cliente</h3>
+      <div class="cards" style="grid-template-columns:1fr; gap:0.5rem">
+        <div class="card accent" style="padding:0.7rem 1rem; display:flex; align-items:center; gap:0.8rem">
+          <span style="font-size:1.3rem; font-weight:700; color:var(--pino)">↑</span>
+          <div><div class="label" style="color:var(--pino)">Actividad mensual</div><div class="body" style="color:var(--pino)">Hoy 22% opera mensualmente. Objetivo: subir con TDD, pagos e inversión recurrente.</div></div>
+        </div>
+        <div class="card accent" style="padding:0.7rem 1rem; display:flex; align-items:center; gap:0.8rem">
+          <span style="font-size:1.3rem; font-weight:700; color:var(--pino)">↑</span>
+          <div><div class="label" style="color:var(--pino)">Saldo promedio</div><div class="body" style="color:var(--pino)">Hoy $6,227. Cada cliente que sube de nivel mueve AUM sin costo de adquisición.</div></div>
+        </div>
+        <div class="card accent" style="padding:0.7rem 1rem; display:flex; align-items:center; gap:0.8rem">
+          <span style="font-size:1.3rem; font-weight:700; color:var(--pino)">↑</span>
+          <div><div class="label" style="color:var(--pino)">Retención</div><div class="body" style="color:var(--pino)">Churn reportado de 0.53% mensual. Revisaremos la metodología para asegurar que mide retención real.</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Right: for Actinver -->
+    <div>
+      <h3>Para Actinver</h3>
+      <div class="cards" style="grid-template-columns:1fr; gap:0.5rem">
+        <div class="card" style="border-left:3px solid var(--pino); padding:0.7rem 1rem">
+          <div class="label">Crecimiento de AUM sin costo de adquisición</div>
+          <div class="body">El crecimiento viene de profundizar clientes existentes, no de adquirir nuevos.</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--castano); padding:0.7rem 1rem">
+          <div class="label">Diversificación del ingreso</div>
+          <div class="body">Hoy 92% depende de AUM. Crédito, seguros y PPR abren nuevas líneas de revenue.</div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--fresno); padding:0.7rem 1rem">
+          <div class="label">Pipeline de clientes patrimoniales</div>
+          <div class="body">El cliente que empieza con $1K en DINN puede ser el patrimonial de Actinver en 10 años.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" style="font-size:0.95rem; padding:0.9rem 1.5rem; margin-top:0.5rem">
+    <strong style="color:var(--olmo)">DINN</strong> pasará de ser una app de inversión ocasional
+    <strong style="color:var(--olmo)">a convertirse en una relación financiera recurrente.</strong>
+  </div>
+  <div class="page">8 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
+</div>
+
+<!-- ══ 9. MONETIZACIÓN ═══════════════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <h1>DINN gana cuando el cliente gana.</h1>
+  <h2>El modelo no necesita extraer valor — necesita crearlo.</h2>
+
+  <!-- Revenue anchor — data from Excel P&L -->
+  <div style="display:flex; gap:1rem; margin-bottom:0.5rem">
+    <div class="card accent" style="flex:1; text-align:center; padding:0.8rem 1rem">
+      <div class="num" style="font-size:1.6rem">$1.18M</div>
+      <div class="label" style="color:var(--pino)">ingreso promedio mensual</div>
+      <div class="sub">dic '25 – feb '26 · $3.55M acum. · ~1.1% yield anual s/AUM</div>
+    </div>
+    <div class="card accent" style="flex:1; text-align:center; padding:0.8rem 1rem">
+      <div class="label" style="color:var(--gris1); font-size:0.58rem; letter-spacing:0.05em; margin-bottom:0.25rem">COMPOSICIÓN DEL INGRESO</div>
+      <div style="display:flex; justify-content:center; gap:0.6rem; align-items:baseline">
+        <div><span style="font-size:1.25rem; font-weight:700; color:var(--pino)">82%</span> <span style="font-size:0.65rem; color:var(--olmo)">Fondos</span></div>
+        <span style="color:var(--gris2); font-size:0.7rem">·</span>
+        <div><span style="font-size:1.25rem; font-weight:700; color:var(--pino)">10%</span> <span style="font-size:0.65rem; color:var(--olmo)">Mesa</span></div>
+        <span style="color:var(--gris2); font-size:0.7rem">·</span>
+        <div><span style="font-size:1.25rem; font-weight:700; color:var(--pino)">8%</span> <span style="font-size:0.65rem; color:var(--olmo)">Comisiones</span></div>
+      </div>
+    </div>
+    <div class="card" style="flex:1; text-align:center; padding:0.8rem 1rem; border:1.5px dashed var(--castano)">
+      <div class="num" style="font-size:1.6rem; color:var(--castano)">~92%</div>
+      <div class="label" style="color:var(--castano)">AUM-dependiente</div>
+      <div class="sub">Concentración que el plan de diversificación abajo resuelve</div>
+    </div>
+  </div>
+
+  <!-- Rentabilidad signal -->
+  <div style="display:flex; align-items:center; gap:0.7rem; background:var(--olivo); border-radius:6px; padding:0.5rem 1rem; margin-bottom:0.3rem">
+    <div style="width:3px; min-height:100%; background:var(--pino); border-radius:2px; flex-shrink:0; align-self:stretch"></div>
+    <p style="font-size:0.78rem; color:var(--olmo); margin:0; line-height:1.5"><strong style="color:var(--pino)">Rentabilidad en revisión.</strong> Auditoría activa de gastos directos e indirectos en curso. La inversión en tecnología y equipo está planeada — primero entender el costo real de operación antes de presentar márgenes.</p>
+  </div>
+
+  <div class="cards c3">
+    <div class="card" style="border-top:3px solid var(--pino)">
+      <div style="font-size:0.7rem; font-weight:700; color:var(--castano)">01</div>
+      <div class="label" style="margin-top:0.2rem; font-size:0.88rem">Profundidad</div>
+      <div class="sub" style="font-size:0.72rem">El cliente que crece, vale más</div>
+      <div class="body" style="font-size:0.78rem; margin-top:0.4rem">Cada cliente que sube un nivel aumenta AUM, fees y retención simultáneamente.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--castano)">
+      <div style="font-size:0.7rem; font-weight:700; color:var(--castano)">02</div>
+      <div class="label" style="margin-top:0.2rem; font-size:0.88rem">Hábito transaccional</div>
+      <div class="sub" style="font-size:0.72rem">La recurrencia como ancla</div>
+      <div class="body" style="font-size:0.78rem; margin-top:0.4rem">TDD y cuenta eje convierten una app ocasional en relación financiera cotidiana.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--fresno)">
+      <div style="font-size:0.7rem; font-weight:700; color:var(--castano)">03</div>
+      <div class="label" style="margin-top:0.2rem; font-size:0.88rem">Servicios complementarios</div>
+      <div class="sub" style="font-size:0.72rem">Distribución sobre la base existente</div>
+      <div class="body" style="font-size:0.78rem; margin-top:0.4rem">Crédito, seguros, PPR — soluciones que el cliente necesita. Actinver como ventaja competitiva.</div>
+    </div>
+  </div>
+
+  <div class="card accent" style="margin-top:0.4rem; border-left:3px solid var(--amarillo)">
+    <h3 style="margin:0 0 0.15rem; font-size:0.68rem">HORIZONTE EXPLORATORIO</h3>
+    <p style="font-size:0.75rem; font-style:italic; color:var(--gris1)">Monetización del contexto: partners que pagan por acceso a una base de alta intención financiera. El cliente recibe valor. DINN no cobra al cliente.</p>
+  </div>
+
+  <div class="footer-bar">A mayor valor para el cliente → mayor AUM → mayor retención → mayor ingreso recurrente.</div>
+  <div class="page">9 / 10</div>
+  <div class="dinn-badge">DINN de Actinver</div>
+</div>
+
+<!-- ══ 10. CLOSING ══════════════════════════════════════════════════ -->
+<div class="slide bg-pino" id="s10" style="align-items:center; justify-content:center">
+  <svg class="leaf-deco" style="bottom:-60px; left:-40px; width:400px; height:400px" viewBox="0 0 200 200">
+    <ellipse cx="50" cy="150" rx="80" ry="40" fill="white" transform="rotate(-20 50 150)"/>
+    <ellipse cx="80" cy="100" rx="60" ry="30" fill="white" transform="rotate(10 80 100)"/>
+  </svg>
+  <svg class="leaf-deco" style="top:-50px; right:-30px; width:350px; height:350px" viewBox="0 0 200 200">
+    <ellipse cx="150" cy="60" rx="70" ry="35" fill="white" transform="rotate(30 150 60)"/>
+  </svg>
+
+  <div class="logo-dinn" style="margin-bottom:0.6rem">
+    <svg viewBox="0 0 40 40" width="64" height="64">
+      <circle cx="20" cy="20" r="19" fill="none" stroke="white" stroke-width="2"/>
+      <path d="M20 1 A19 19 0 0 1 20 39 Z" fill="white"/>
+    </svg>
+    <span class="logo-dinn-text" style="color:white; font-size:2.6rem">DINN</span>
+  </div>
+  <p style="color:var(--fresno); font-size:1rem; font-weight:400; margin-top:0.3rem">de Actinver</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- ══ ANEXOS ════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+
+<!-- ══ A1. DETALLE FINANCIERO ═════════════════════════════════════════ -->
+<div class="slide" id="sA1">
+  <h3 style="margin-top:0; color:var(--gris2)">ANEXO</h3>
+  <h1>Detalle financiero</h1>
+  <h2>P&L parcial · dic '25 – feb '26 (3 meses disponibles)</h2>
+
+  <!-- P&L Table -->
+  <div style="flex:1; display:flex; flex-direction:column; gap:0.8rem">
+    <table style="width:100%; border-collapse:collapse; font-size:0.78rem">
+      <thead>
+        <tr style="border-bottom:2px solid var(--pino)">
+          <th style="text-align:left; padding:0.5rem 0.8rem; font-weight:600; color:var(--pino)">Concepto</th>
+          <th style="text-align:right; padding:0.5rem 0.8rem; font-weight:600; color:var(--pino)">Dic '25</th>
+          <th style="text-align:right; padding:0.5rem 0.8rem; font-weight:600; color:var(--pino)">Ene '26</th>
+          <th style="text-align:right; padding:0.5rem 0.8rem; font-weight:600; color:var(--pino)">Feb '26</th>
+          <th style="text-align:right; padding:0.5rem 0.8rem; font-weight:600; color:var(--pino)">Acumulado</th>
+          <th style="text-align:right; padding:0.5rem 0.8rem; font-weight:600; color:var(--gris1)">Promedio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--gris3)">
+          <td style="padding:0.45rem 0.8rem; font-weight:600">Ingresos totales</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right">$1.22M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right">$1.24M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right">$1.09M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; font-weight:600">$3.55M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--gris1)">$1.18M</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gris3); color:var(--gris1)">
+          <td style="padding:0.35rem 0.8rem 0.35rem 1.6rem; font-size:0.72rem">Admon y Dist. Fondos</td>
+          <td colspan="4" style="padding:0.35rem 0.8rem; text-align:right; font-size:0.72rem">82% del ingreso total</td>
+          <td></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gris3); color:var(--gris1)">
+          <td style="padding:0.35rem 0.8rem 0.35rem 1.6rem; font-size:0.72rem">Mesa de Dinero</td>
+          <td colspan="4" style="padding:0.35rem 0.8rem; text-align:right; font-size:0.72rem">10% del ingreso total</td>
+          <td></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gris3); color:var(--gris1)">
+          <td style="padding:0.35rem 0.8rem 0.35rem 1.6rem; font-size:0.72rem">Comisiones</td>
+          <td colspan="4" style="padding:0.35rem 0.8rem; text-align:right; font-size:0.72rem">8% del ingreso total</td>
+          <td></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gris3)">
+          <td style="padding:0.45rem 0.8rem; font-weight:600">Gastos directos</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right">~$0.30M*</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right">~$75K</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right">~$75K</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; font-weight:600">—</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--gris1)">~$75K rec.</td>
+        </tr>
+        <tr style="background:var(--olivo)">
+          <td style="padding:0.45rem 0.8rem; font-weight:700; color:var(--pino)">Utilidad operativa (antes de indirectos)</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; font-weight:600; color:var(--pino)">$1.53M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; font-weight:600; color:var(--pino)">$1.17M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; font-weight:600; color:var(--pino)">$1.02M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; font-weight:700; color:var(--pino)">$3.71M</td>
+          <td style="padding:0.45rem 0.8rem; text-align:right; color:var(--gris1)">$1.24M</td>
+        </tr>
+      </tbody>
     </table>
-    <div class="callout" style="margin-top:1rem;">
-      <strong>Insight:</strong> Mid-level consultants show highest billable time; analyst retention needs attention for pipeline health.
-    </div>
-  </div>
-</div>
+    <div style="font-size:0.62rem; color:var(--gris2); margin-top:0.1rem">* Dic '25 incluye reverso atípico de Sistemas (~$230K). Gasto recurrente normalizado: ~$75K/mes. RH: $0 en los tres meses.</div>
 
-<!-- Slide 6: Brand Identity & Voice -->
-<div class="slide">
-  <div>
-    <h1>DINN Brand Identity</h1>
-    <h2>Market positioning, tone & client perception</h2>
-    <div class="rows" style="margin-top:1.5rem;">
-      <div class="row">
-        <div>
-          <h3>Core Brand Pillars</h3>
-          <ul style="margin-left:1.2rem; margin-top:0.7rem;">
-            <li><strong>Analytical Rigor</strong> — Data-driven problem solving</li>
-            <li><strong>Industry Expertise</strong> — Deep sector knowledge</li>
-            <li><strong>Trusted Partnership</strong> — Long-term client relationships</li>
-            <li><strong>Thought Leadership</strong> — Insights & publications</li>
-          </ul>
-        </div>
+    <div style="display:flex; gap:1rem; margin-top:0.4rem">
+      <div class="card accent" style="flex:1; padding:0.6rem 0.9rem">
+        <div class="label" style="color:var(--pino); font-size:0.72rem">Yield sobre AUM</div>
+        <div style="font-size:1.1rem; font-weight:700; color:var(--pino)">~1.1% anual</div>
+        <div class="sub">$1.18M ingreso / $1,250M AUM · robo-advisors globales: 0.25–0.50%</div>
       </div>
-      <div class="row">
-        <div>
-          <h3>Tone & Messaging</h3>
-          <p style="margin-top:0.7rem;">
-            <strong>For prospects:</strong> "DINN brings clarity to complex challenges through rigorous analysis and proven expertise." 
-          </p>
-          <p style="margin-top:0.7rem;">
-            <strong>For teams:</strong> "We solve the toughest problems. You'll grow here."
-          </p>
-        </div>
+      <div class="card accent" style="flex:1; padding:0.6rem 0.9rem">
+        <div class="label" style="color:var(--pino); font-size:0.72rem">Ingreso por cliente</div>
+        <div style="font-size:1.1rem; font-weight:700; color:var(--pino)">~$5.86/mes</div>
+        <div class="sub">$1.18M / 201K clientes · en revisión con auditoría de gastos</div>
+      </div>
+      <div class="card" style="flex:1; padding:0.6rem 0.9rem; border:1.5px dashed var(--castano)">
+        <div class="label" style="color:var(--castano); font-size:0.72rem">En auditoría</div>
+        <div style="font-size:0.78rem; color:var(--gris1); margin-top:0.2rem; line-height:1.5">Gastos directos: validando estructura. Gastos indirectos: entender qué carga Actinver para optimizar asignación.</div>
       </div>
     </div>
   </div>
+
+  <div class="page" style="color:var(--gris2)">Anexo 1</div>
+  <div class="dinn-badge">DINN de Actinver</div>
 </div>
 
-<!-- Slide 7: Strategic Initiatives FY2026 -->
-<div class="slide">
-  <div>
-    <h1>FY2026 Strategic Roadmap</h1>
-    <h2>Three pillars driving growth & impact</h2>
-    <div class="cols" style="margin-top:1.5rem;">
-      <div class="col">
-        <h3>Pillar 1: Client Expansion</h3>
-        <div class="stack" style="margin-top:0.5rem;">
-          <p><strong>• Geographic reach</strong><br><span class="sub">Enter 2 new markets (APAC focus)</span></p>
-          <p><strong>• Sector deepening</strong><br><span class="sub">Expand FinTech and Energy practices</span></p>
-          <p><strong>• Account value</strong><br><span class="sub">Target $1M+ annual contracts</span></p>
-        </div>
-      </div>
-      <div class="col">
-        <h3>Pillar 2: People & Culture</h3>
-        <div class="stack" style="margin-top:0.5rem;">
-          <p><strong>• Hire 15 consultants</strong><br><span class="sub">Focus on senior hires & diversity</span></p>
-          <p><strong>• Retention programs</strong><br><span class="sub">Career ladders + mentorship</span></p>
-          <p><strong>• Leadership development</strong><br><span class="sub">Partner track clarity</span></p>
-        </div>
-      </div>
-      <div class="col">
-        <h3>Pillar 3: Capability Building</h3>
-        <div class="stack" style="margin-top:0.5rem;">
-          <p><strong>• Digital transformation</strong><br><span class="sub">AI/ML integration in projects</span></p>
-          <p><strong>• Thought leadership</strong><br><span class="sub">2 major research reports</span></p>
-          <p><strong>• Tech infrastructure</strong><br><span class="sub">New project management platform</span></p>
-        </div>
-      </div>
+<!-- ══ A2. GLOSARIO Y DEFINICIONES ═══════════════════════════════════ -->
+<div class="slide" id="sA2">
+  <h3 style="margin-top:0; color:var(--gris2)">ANEXO</h3>
+  <h1>Definiciones y metodología</h1>
+  <h2>Para alinear lectura de métricas en el Consejo.</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; flex:1; align-content:start; margin-top:0.5rem">
+    <div class="card" style="padding:0.7rem 1rem">
+      <div class="label" style="font-size:0.82rem; color:var(--pino)">Niveles de cliente</div>
+      <div class="body" style="margin-top:0.3rem"><strong>N1:</strong> $1–$1K · <strong>N2:</strong> $1K–$5K · <strong>N3:</strong> $5K–$20K · <strong>N4:</strong> $20K–$50K · <strong>N5:</strong> $50K–$100K · <strong>N6:</strong> $100K+<br>83% de clientes están en N1-N2 (saldo &lt; $5K). Saldo promedio: $6,227.</div>
+    </div>
+    <div class="card" style="padding:0.7rem 1rem">
+      <div class="label" style="font-size:0.82rem; color:var(--pino)">Churn mensual (0.53%)</div>
+      <div class="body" style="margin-top:0.3rem">Clientes que cierran cuenta o llevan saldo a $0 en el mes. <strong style="color:var(--castano)">En revisión:</strong> evaluaremos si la definición actual captura churn pasivo (cuentas inactivas con saldo mínimo).</div>
+    </div>
+    <div class="card" style="padding:0.7rem 1rem">
+      <div class="label" style="font-size:0.82rem; color:var(--pino)">North Star Metric</div>
+      <div class="body" style="margin-top:0.3rem">% de usuarios con ≥$10,000 AUM que realizan al menos una <em>acción de valor</em> al mes: invertir, depositar, usar TDD, consumir educación financiera o referir.</div>
+    </div>
+    <div class="card" style="padding:0.7rem 1rem">
+      <div class="label" style="font-size:0.82rem; color:var(--pino)">Opera mensualmente (22%)</div>
+      <div class="body" style="margin-top:0.3rem">Usuarios que ejecutaron al menos una transacción en el mes (inversión, retiro, pago, uso de TDD). No incluye solo abrir la app.</div>
+    </div>
+    <div class="card" style="padding:0.7rem 1rem">
+      <div class="label" style="font-size:0.82rem; color:var(--pino)">AUM (Assets Under Management)</div>
+      <div class="body" style="margin-top:0.3rem">Suma total de activos administrados en la plataforma DINN. Incluye fondos, mesa de dinero y efectivo en cuenta. ~$1,250M a feb '26.</div>
+    </div>
+    <div class="card" style="padding:0.7rem 1rem">
+      <div class="label" style="font-size:0.82rem; color:var(--pino)">Yield sobre AUM (~1.1% anual)</div>
+      <div class="body" style="margin-top:0.3rem">Ingreso anualizado dividido entre AUM promedio. Incluye fees de administración, distribución y comisiones. Referencia global robo-advisors: 0.25–0.50%.</div>
     </div>
   </div>
+
+  <div class="page" style="color:var(--gris2)">Anexo 2</div>
+  <div class="dinn-badge">DINN de Actinver</div>
 </div>
 
-<!-- Slide 8: KPIs & Success Metrics -->
-<div class="slide">
-  <div>
-    <h1>FY2026 Key Performance Indicators</h1>
-    <h2>How we measure progress against strategic initiatives</h2>
-    <div class="chart-grid" style="margin-top:1.5rem;">
-      <div class="chart-item">
-        <div class="chart-label">Revenue Target</div>
-        <p style="font-size:2rem; font-weight:700; color:var(--pino); margin:0.5rem 0;">$54M</p>
-        <p class="sub">+14% vs. FY2025</p>
-      </div>
-      <div class="chart-item">
-        <div class="chart-label">Headcount Growth</div>
-        <p style="font-size:2rem; font-weight:700; color:var(--castano); margin:0.5rem 0;">+15</p>
-        <p class="sub">From 82 to 97 consultants</p>
-      </div>
-      <div class="chart-item">
-        <div class="chart-label">Target EBITDA Margin</div>
-        <p style="font-size:2rem; font-weight:700; color:var(--fresno); margin:0.5rem 0;">31%</p>
-        <p class="sub">+3pp improvement</p>
-      </div>
-      <div class="chart-item">
-        <div class="chart-label">Client Retention</div>
-        <p style="font-size:2rem; font-weight:700; color:var(--pino); margin:0.5rem 0;">94%</p>
-        <p class="sub">Maintain strategic accounts</p>
-      </div>
+<!-- ══ A3. BENCHMARK COMPETITIVO ═════════════════════════════════════ -->
+<div class="slide" id="sA3">
+  <h3 style="margin-top:0; color:var(--gris2)">ANEXO</h3>
+  <h1>Contexto competitivo</h1>
+  <h2>DINN en el ecosistema de inversión digital en México.</h2>
+
+  <table style="width:100%; border-collapse:collapse; font-size:0.75rem; margin-top:0.5rem">
+    <thead>
+      <tr style="border-bottom:2px solid var(--pino)">
+        <th style="text-align:left; padding:0.5rem 0.6rem; font-weight:600; color:var(--pino)">Métrica</th>
+        <th style="text-align:center; padding:0.5rem 0.6rem; font-weight:700; color:var(--blanco); background:var(--pino); border-radius:4px 4px 0 0">DINN</th>
+        <th style="text-align:center; padding:0.5rem 0.6rem; font-weight:600; color:var(--gris1)">Neobancos MX</th>
+        <th style="text-align:center; padding:0.5rem 0.6rem; font-weight:600; color:var(--gris1)">Robo-advisors global</th>
+        <th style="text-align:center; padding:0.5rem 0.6rem; font-weight:600; color:var(--gris1)">Fuente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.5rem 0.6rem; font-weight:500">Churn anual</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-weight:700; color:var(--pino); background:var(--olivo)">≈6%*</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">~22%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">12–15%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-size:0.62rem; color:var(--gris2)">Coinlaw / Alternacx 2025</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.5rem 0.6rem; font-weight:500">Yield s/AUM (anual)</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-weight:700; color:var(--pino); background:var(--olivo)">~1.1%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">N/A</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">0.25–0.50%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-size:0.62rem; color:var(--gris2)">Sacra / Betterment 2025</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.5rem 0.6rem; font-weight:500">MAU / base total</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-weight:700; color:var(--pino); background:var(--olivo)">22%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">30–65%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">20–30%</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-size:0.62rem; color:var(--gris2)">Coinlaw / Statista 2025</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.5rem 0.6rem; font-weight:500">Saldo promedio</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-weight:700; color:var(--pino); background:var(--olivo)">$6,227</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">No público</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">$15K–$30K USD</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-size:0.62rem; color:var(--gris2)">Datos internos / Investopedia</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.5rem 0.6rem; font-weight:500">NPS</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-weight:700; color:var(--castano); background:var(--olivo)">41.2</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">50–70</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">50–90</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-size:0.62rem; color:var(--gris2)">Resonate CX / CustomerGauge</td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem 0.6rem; font-weight:500">Clientes</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-weight:700; color:var(--pino); background:var(--olivo)">201K</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">Nu: 13M · GBM: 12.5M</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center">Betterment: 900K</td>
+        <td style="padding:0.5rem 0.6rem; text-align:center; font-size:0.62rem; color:var(--gris2)">Nu / GBM / Sacra 2025</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.62rem; color:var(--gris2); margin-top:0.3rem">* Churn en revisión metodológica. Neobancos MX incluye Nu, Stori, Klar, Spin. Robo-advisors global incluye Betterment, Wealthfront, Wealthsimple.</div>
+
+  <div style="display:flex; gap:1rem; margin-top:auto; margin-bottom:0.3rem">
+    <div class="card accent" style="flex:1; padding:0.55rem 0.9rem">
+      <div class="label" style="color:var(--pino); font-size:0.72rem">Fortalezas</div>
+      <div class="body" style="color:var(--pino)">Retención y yield superiores. Costo operativo bajo. Respaldo institucional de Actinver.</div>
+    </div>
+    <div class="card" style="flex:1; padding:0.55rem 0.9rem; border-color:var(--castano)">
+      <div class="label" style="color:var(--castano); font-size:0.72rem">Áreas de mejora</div>
+      <div class="body">NPS debajo de 50. Engagement mensual por debajo de neobancos. Concentración de ingreso en AUM.</div>
+    </div>
+    <div class="card accent" style="flex:1; padding:0.55rem 0.9rem">
+      <div class="label" style="color:var(--pino); font-size:0.72rem">Diferenciador</div>
+      <div class="body" style="color:var(--pino)">Único digital con infraestructura de casa de bolsa regulada + inversión + transaccionalidad integradas.</div>
     </div>
   </div>
+
+  <div class="page" style="color:var(--gris2)">Anexo 3</div>
+  <div class="dinn-badge">DINN de Actinver</div>
 </div>
 
-<!-- Slide 9: Risk & Mitigation -->
-<div class="slide">
-  <div>
-    <h1>Risk Assessment & Mitigation</h1>
-    <h2>Key risks and contingency plans</h2>
-    <table style="margin-top:1rem;">
-      <tr>
-        <th>Risk</th>
-        <th>Impact</th>
-        <th>Mitigation</th>
-      </tr>
-      <tr>
-        <td><strong>Talent retention</strong></td>
-        <td>High</td>
-        <td>Competitive comp review, career paths, mentorship</td>
-      </tr>
-      <tr>
-        <td><strong>Market slowdown</strong></td>
-        <td>Medium</td>
-        <td>Diversify sectors, expand product offerings</td>
-      </tr>
-      <tr>
-        <td><strong>Key client loss</strong></td>
-        <td>High</td>
-        <td>Relationship management, quarterly business reviews</td>
-      </tr>
-      <tr>
-        <td><strong>Hiring slowdown</strong></td>
-        <td>Medium</td>
-        <td>Build talent pipeline, increase referral programs</td>
-      </tr>
-    </table>
-  </div>
-</div>
+<!-- ══ A4. COMPORTAMIENTO POR NIVEL ══════════════════════════════════ -->
+<div class="slide" id="sA4">
+  <h3 style="margin-top:0; color:var(--gris2)">ANEXO</h3>
+  <h1>Comportamiento por nivel de cliente</h1>
+  <h2>Data 2025 · El engagement crece exponencialmente con el saldo.</h2>
 
-<!-- Slide 10: Q&A & Next Steps -->
-<div class="slide bg-pino">
-  <div style="text-align:center; justify-content:center; display:flex; flex-direction:column; align-items:center;">
-    <h1 style="font-size:2.5rem; margin-bottom:1rem;">Questions & Discussion</h1>
-    <p style="font-size:1rem; margin:1rem 0;">Board feedback on strategic priorities</p>
-    <p style="margin-top:2rem; font-size:0.9rem;">Next steps: Board approval of FY2026 budget and headcount plan</p>
-  </div>
-</div>
+  <table style="width:100%; border-collapse:collapse; font-size:0.72rem; margin-top:0.3rem">
+    <thead>
+      <tr style="border-bottom:2px solid var(--pino)">
+        <th style="text-align:left; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">Nivel</th>
+        <th style="text-align:left; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">Rango</th>
+        <th style="text-align:right; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">Clientes</th>
+        <th style="text-align:right; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">% Clientes</th>
+        <th style="text-align:right; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">AUM Prom.</th>
+        <th style="text-align:right; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">% AUM</th>
+        <th style="text-align:center; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">Opera</th>
+        <th style="text-align:center; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">Deposita</th>
+        <th style="text-align:center; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">TDD</th>
+        <th style="text-align:center; padding:0.4rem 0.5rem; font-weight:600; color:var(--pino)">Refiere</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--gris3); background:rgba(11,100,92,0.04)">
+        <td style="padding:0.4rem 0.5rem; font-weight:700">N1</td>
+        <td style="padding:0.4rem 0.5rem">$1 – $1K</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">171,351</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; font-weight:600">80.5%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">$103</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; color:var(--gris2)">1.0%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">11%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">11%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">4%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">8%</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.4rem 0.5rem; font-weight:700">N2</td>
+        <td style="padding:0.4rem 0.5rem">$1K – $5K</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">15,550</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">7.3%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">$2,164</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; color:var(--gris2)">2.0%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">40%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">44%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">13%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">17%</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.4rem 0.5rem; font-weight:700">N3</td>
+        <td style="padding:0.4rem 0.5rem">$5K – $20K</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">11,108</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">5.2%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">$9,694</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">6.4%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">49%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">56%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">14%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">32%</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.4rem 0.5rem; font-weight:700">N4</td>
+        <td style="padding:0.4rem 0.5rem">$20K – $50K</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">6,125</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">2.9%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">$30,648</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">11.1%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:600; color:var(--pino)">68%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:600; color:var(--pino)">71%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">13%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">26%</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--gris3)">
+        <td style="padding:0.4rem 0.5rem; font-weight:700">N5</td>
+        <td style="padding:0.4rem 0.5rem">$50K – $100K</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">3,031</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">1.4%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">$69,232</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right">12.4%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:600; color:var(--pino)">75%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:600; color:var(--pino)">80%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">15%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center">29%</td>
+      </tr>
+      <tr style="border-bottom:2px solid var(--pino); background:var(--olivo)">
+        <td style="padding:0.4rem 0.5rem; font-weight:700; color:var(--pino)">N6</td>
+        <td style="padding:0.4rem 0.5rem; color:var(--pino)">$100K+</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; color:var(--pino)">5,670</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; color:var(--pino)">2.7%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; font-weight:600; color:var(--pino)">$200,727</td>
+        <td style="padding:0.4rem 0.5rem; text-align:right; font-weight:700; color:var(--pino)">67.2%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:700; color:var(--pino)">90%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:700; color:var(--pino)">77%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; color:var(--pino)">8%</td>
+        <td style="padding:0.4rem 0.5rem; text-align:center; font-weight:700; color:var(--pino)">61%</td>
+      </tr>
+    </tbody>
+  </table>
 
-<!-- ANNEX SLIDES (Slides 11–14) -->
-
-<!-- Annex 1: Detailed P&L -->
-<div class="slide">
-  <div>
-    <h1>Annex 1: FY2025 Detailed P&L</h1>
-    <h2>Revenue, operating expenses & profitability breakdown</h2>
-    <table style="margin-top:1rem; font-size:0.8rem;">
-      <tr>
-        <th>Line Item</th>
-        <th>FY2024</th>
-        <th>FY2025</th>
-        <th>Change</th>
-        <th>% of Revenue</th>
-      </tr>
-      <tr>
-        <td><strong>Total Revenue</strong></td>
-        <td>$42.1M</td>
-        <td>$47.2M</td>
-        <td>+$5.1M</td>
-        <td>100%</td>
-      </tr>
-      <tr>
-        <td>Consulting Services</td>
-        <td>$35.8M</td>
-        <td>$40.2M</td>
-        <td>+$4.4M</td>
-        <td>85%</td>
-      </tr>
-      <tr>
-        <td>Training & Workshops</td>
-        <td>$4.2M</td>
-        <td>$5.1M</td>
-        <td>+$0.9M</td>
-        <td>11%</td>
-      </tr>
-      <tr>
-        <td>Publications & IP</td>
-        <td>$2.1M</td>
-        <td>$1.9M</td>
-        <td>-$0.2M</td>
-        <td>4%</td>
-      </tr>
-      <tr style="border-top:2px solid var(--gris1);">
-        <td><strong>Cost of Services</strong></td>
-        <td><strong>$20.5M</strong></td>
-        <td><strong>$22.1M</strong></td>
-        <td><strong>+$1.6M</strong></td>
-        <td><strong>47%</strong></td>
-      </tr>
-      <tr>
-        <td>Consultant salaries</td>
-        <td>$18.2M</td>
-        <td>$19.8M</td>
-        <td>+$1.6M</td>
-        <td>42%</td>
-      </tr>
-      <tr>
-        <td>Benefits & payroll taxes</td>
-        <td>$2.3M</td>
-        <td>$2.3M</td>
-        <td>—</td>
-        <td>5%</td>
-      </tr>
-      <tr style="border-top:2px solid var(--gris1);">
-        <td><strong>Gross Profit</strong></td>
-        <td><strong>$21.6M</strong></td>
-        <td><strong>$25.1M</strong></td>
-        <td><strong>+$3.5M</strong></td>
-        <td><strong>53%</strong></td>
-      </tr>
-      <tr>
-        <td>Sales & Marketing</td>
-        <td>$4.8M</td>
-        <td>$5.2M</td>
-        <td>+$0.4M</td>
-        <td>11%</td>
-      </tr>
-      <tr>
-        <td>General & Admin</td>
-        <td>$3.7M</td>
-        <td>$3.9M</td>
-        <td>+$0.2M</td>
-        <td>8%</td>
-      </tr>
-      <tr>
-        <td>Technology & Infrastructure</td>
-        <td>$1.2M</td>
-        <td>$1.4M</td>
-        <td>+$0.2M</td>
-        <td>3%</td>
-      </tr>
-      <tr style="border-top:2px solid var(--gris1);">
-        <td><strong>EBITDA</strong></td>
-        <td><strong>$11.9M</strong></td>
-        <td><strong>$13.2M</strong></td>
-        <td><strong>+$1.3M</strong></td>
-        <td><strong>28%</strong></td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<!-- Annex 2: Market Competitors -->
-<div class="slide">
-  <div>
-    <h1>Annex 2: Competitive Landscape</h1>
-    <h2>Market share, positioning & differentiation</h2>
-    <table style="margin-top:1rem; font-size:0.8rem;">
-      <tr>
-        <th>Firm</th>
-        <th>Focus</th>
-        <th>Size (Rev)</th>
-        <th>Strength</th>
-        <th>vs. DINN</th>
-      </tr>
-      <tr>
-        <td><strong>DINN</strong></td>
-        <td>Mid-market, cross-sector</td>
-        <td>$47.2M</td>
-        <td>Agility, trusted relationships</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td><strong>Competitor A</strong></td>
-        <td>Enterprise, digital transform</td>
-        <td>$280M</td>
-        <td>Scale, brand recognition</td>
-        <td>Larger, less personal</td>
-      </tr>
-      <tr>
-        <td><strong>Competitor B</strong></td>
-        <td>Boutique, strategy</td>
-        <td>$32M</td>
-        <td>Thought leadership, prestige</td>
-        <td>Smaller reach, higher rates</td>
-      </tr>
-      <tr>
-        <td><strong>Competitor C</strong></td>
-        <td>Operations, cost reduction</td>
-        <td>$85M</td>
-        <td>Efficiency, analytics tools</td>
-        <td>Broader practice, lower margins</td>
-      </tr>
-    </table>
-    <div class="callout" style="margin-top:1.5rem;">
-      <strong>Positioning:</strong> DINN competes as the "trusted mid-market partner" with deep expertise, not on scale or brand prestige. Differentiation = relationships + analytical rigor.
+  <div style="display:flex; gap:1rem; margin-top:0.6rem">
+    <div class="card accent" style="flex:1; padding:0.6rem 0.9rem">
+      <div class="label" style="color:var(--pino); font-size:0.72rem">La ley de poder</div>
+      <div class="body" style="color:var(--pino)">2.7% de clientes (N6) generan el 67% del AUM. El valor no es lineal — es exponencial con cada nivel.</div>
+    </div>
+    <div class="card accent" style="flex:1; padding:0.6rem 0.9rem">
+      <div class="label" style="color:var(--pino); font-size:0.72rem">La transición clave: N1 → N2</div>
+      <div class="body" style="color:var(--pino)">El engagement salta de 11% a 40%. Si 10% de N1 sube a N2 = +$35M AUM y +5,000 traders activos.</div>
+    </div>
+    <div class="card accent" style="flex:1; padding:0.6rem 0.9rem">
+      <div class="label" style="color:var(--pino); font-size:0.72rem">N6 como motor de referidos</div>
+      <div class="body" style="color:var(--pino)">61% de N6 refiere vs 8% en N1. Los clientes más valiosos son también el mejor canal de adquisición.</div>
     </div>
   </div>
-</div>
 
-<!-- Annex 3: Team Composition -->
-<div class="slide">
-  <div>
-    <h1>Annex 3: Team Composition & Development</h1>
-    <h2>Current headcount, hiring plan & career progression</h2>
-    <div class="chart-grid" style="margin-top:1.5rem;">
-      <div class="chart-item">
-        <div class="chart-label">Current Headcount (FY2025)</div>
-        <table style="margin-top:0.5rem;">
-          <tr>
-            <th>Level</th>
-            <th>Count</th>
-            <th>%</th>
-          </tr>
-          <tr>
-            <td>Partner</td>
-            <td>4</td>
-            <td>5%</td>
-          </tr>
-          <tr>
-            <td>Senior Consultant</td>
-            <td>18</td>
-            <td>22%</td>
-          </tr>
-          <tr>
-            <td>Consultant</td>
-            <td>42</td>
-            <td>51%</td>
-          </tr>
-          <tr>
-            <td>Analyst</td>
-            <td>18</td>
-            <td>22%</td>
-          </tr>
-          <tr style="border-top:2px solid var(--gris1);">
-            <td><strong>Total</strong></td>
-            <td><strong>82</strong></td>
-            <td><strong>100%</strong></td>
-          </tr>
-        </table>
-      </div>
-      <div class="chart-item">
-        <div class="chart-label">FY2026 Hiring Plan</div>
-        <table style="margin-top:0.5rem;">
-          <tr>
-            <th>Level</th>
-            <th>New Hires</th>
-            <th>FY2026 Total</th>
-          </tr>
-          <tr>
-            <td>Partner</td>
-            <td>1</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>Senior Consultant</td>
-            <td>5</td>
-            <td>23</td>
-          </tr>
-          <tr>
-            <td>Consultant</td>
-            <td>7</td>
-            <td>49</td>
-          </tr>
-          <tr>
-            <td>Analyst</td>
-            <td>2</td>
-            <td>20</td>
-          </tr>
-          <tr style="border-top:2px solid var(--gris1);">
-            <td><strong>Total</strong></td>
-            <td><strong>15</strong></td>
-            <td><strong>97</strong></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="callout" style="margin-top:1.5rem;">
-      <strong>Development focus:</strong> Accelerate Senior Consultant promotions; establish clear Partner track; improve analyst-to-consultant conversion rate to 70% (currently 60%).
-    </div>
-  </div>
-</div>
-
-<!-- Annex 4: Summary & Board Actions -->
-<div class="slide bg-pino">
-  <div>
-    <h1>Annex 4: Summary & Board Actions</h1>
-    <div style="margin-top:2rem;">
-      <h2 style="color:var(--fresno); font-weight:600; margin-bottom:1.5rem;">Recommended Board Actions</h2>
-      <div class="stack" style="gap:1rem;">
-        <p><strong>1. Approve FY2026 Budget</strong><br><span style="color:var(--fresno);">Revenue target $54M, EBITDA margin 31%, headcount +15</span></p>
-        <p><strong>2. Authorize Geographic Expansion</strong><br><span style="color:var(--fresno);">Approve APAC market entry with $500K investment</span></p>
-        <p><strong>3. Establish Partner Track</strong><br><span style="color:var(--fresno);">Clear advancement criteria and timeline for senior team</span></p>
-        <p><strong>4. Approve Talent Retention Program</strong><br><span style="color:var(--fresno);">Competitive compensation review and career development initiatives</span></p>
-        <p><strong>5. Review Brand & Messaging</strong><br><span style="color:var(--fresno);">Endorse DINN positioning as trusted mid-market partner</span></p>
-      </div>
-      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--fresno); font-size:0.9rem;">
-        <p>Questions? Contact: Arturo Camargo (CEO) | DINN Board Office</p>
-        <p>Document prepared: March 2026 | Confidential — Board Only</p>
-      </div>
-    </div>
-  </div>
+  <div style="font-size:0.6rem; color:var(--gris2); margin-top:0.4rem">Data 2025. No se cuenta con data comparable de 2026 al cierre de esta presentación. "Opera" = compra/venta de instrumentos en el mes.</div>
+  <div class="page" style="color:var(--gris2)">Anexo 4</div>
+  <div class="dinn-badge">DINN de Actinver</div>
 </div>
 
 </div>
 
+<!-- ── Nav ── -->
 <div class="nav">
-  <button onclick="go(cur-1)">← Prev</button>
-  <button onclick="go(cur+1)">Next →</button>
+  <button id="prev">←</button>
+  <div class="dots" id="dots"></div>
+  <button id="next">→</button>
+  <span class="counter" id="counter">1 / 13</span>
 </div>
 
 <script>
-let slides = document.querySelectorAll('.slide');
-let cur = 0;
-
-function go(n){
-  if(n<0)n=0;
-  if(n>=slides.length)n=slides.length-1;
-  slides[cur].classList.remove('active');
-  slides[cur=n].classList.add('active');
+// Scale deck to fit viewport
+function scaleDeck(){
+  const d=document.getElementById('deck'),
+        sw=window.innerWidth, sh=window.innerHeight,
+        s=Math.min(sw/1280, sh/720);
+  d.style.transform='scale('+s+')';
 }
+window.addEventListener('resize',scaleDeck);
+scaleDeck();
 
-document.addEventListener('keydown',(e)=>{
-  if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}
+// Navigation
+const slides=document.querySelectorAll('.slide'),
+      dotsEl=document.getElementById('dots'),
+      counter=document.getElementById('counter');
+let cur=0;
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.addEventListener('click',()=>go(i));
+  dotsEl.appendChild(d);
+});
+function go(n){
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  counter.textContent=(cur+1)+' / '+slides.length;
+}
+document.getElementById('prev').addEventListener('click',()=>go(cur-1));
+document.getElementById('next').addEventListener('click',()=>go(cur+1));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(cur+1)}
   if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}
 });
 slides[0].classList.add('active');
