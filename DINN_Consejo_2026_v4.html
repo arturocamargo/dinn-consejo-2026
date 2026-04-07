@@ -1,1 +1,770 @@
-PLACEHOLDER_WILL_BE_REPLACED
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DINN 2026 — Consejo de Administración</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pino: #0B645C;
+  --olmo: #002421;
+  --castano: #27BCB0;
+  --fresno: #9AD9CF;
+  --olivo: #E8F4F3;
+  --amarillo: #FFE980;
+  --blanco: #FFFFFF;
+  --gris1: #616161;
+  --gris2: #999999;
+  --gris3: #E7E7E7;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* ── Force 16:9 + scale to fill viewport ── */
+html, body { height:100%; overflow:hidden; background:#000; }
+body { font-family:'Poppins',sans-serif; color:var(--olmo); display:flex; align-items:center; justify-content:center; }
+.deck {
+  width:1280px; height:720px;
+  position:relative;
+  transform-origin:center center;
+  background:var(--blanco);
+}
+
+/* ── Slides ── */
+.slide {
+  position:absolute; inset:0;
+  padding:3.2rem 4.5rem 2.8rem;
+  display:flex; flex-direction:column;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.35s ease;
+  overflow:hidden;
+  background:var(--blanco);
+}
+.slide.active { opacity:1; pointer-events:all; }
+.slide.bg-pino { background:var(--pino); color:var(--blanco); }
+.slide.bg-pino h1, .slide.bg-pino h2, .slide.bg-pino p, .slide.bg-pino li,
+.slide.bg-pino .label, .slide.bg-pino .body, .slide.bg-pino .sub { color:var(--blanco); }
+.slide.bg-pino .sub { color:var(--fresno); }
+
+/* ── Typography — optimized for projection ── */
+h1 { font-size:2.2rem; font-weight:700; color:var(--pino); line-height:1.3; margin-bottom:0.15rem; }
+h2 { font-size:1.05rem; font-weight:400; color:var(--gris1); line-height:1.5; margin-bottom:1rem; }
+h3 { font-size:0.75rem; font-weight:600; color:var(--castano); letter-spacing:0.12em; text-transform:uppercase; margin:0.7rem 0 0.3rem; }
+p, li { font-size:0.92rem; line-height:1.6; color:var(--olmo); }
+ul { padding-left:1.3rem; margin-bottom:0.5rem; }
+li { margin-bottom:0.2rem; }
+strong { font-weight:600; }
+
+/* ── Cards ── */
+.cards { display:grid; gap:0.75rem; margin:0.4rem 0; }
+.c2 { grid-template-columns:repeat(2,1fr); }
+.c3 { grid-template-columns:repeat(3,1fr); }
+.c4 { grid-template-columns:repeat(4,1fr); }
+.c5 { grid-template-columns:repeat(5,1fr); }
+.card {
+  background:var(--blanco);
+  border:1.5px solid var(--gris3);
+  border-radius:12px;
+  padding:0.9rem 1rem;
+}
+.card.accent { background:var(--olivo); border-color:transparent; }
+.card .num { font-size:2.2rem; font-weight:700; line-height:1; color:var(--pino); }
+.card .label { font-size:0.78rem; font-weight:600; color:var(--olmo); margin-top:0.1rem; }
+.card .sub { font-size:0.65rem; color:var(--gris2); font-weight:400; }
+.card .body { font-size:0.72rem; color:var(--gris1); margin-top:0.2rem; line-height:1.5; }
+
+/* ── Band / Footer ── */
+.band {
+  background:var(--olivo);
+  border-radius:8px;
+  padding:0.55rem 1.2rem;
+  text-align:center;
+  font-weight:600;
+  font-size:0.85rem;
+  color:var(--pino);
+  margin:0.45rem 0;
+}
+.footer-bar {
+  background:var(--olivo);
+  border-radius:8px;
+  padding:0.55rem 1.2rem;
+  font-size:0.75rem;
+  color:var(--pino);
+  margin-top:auto;
+  text-align:center;
+  font-weight:400;
+}
+.footer-bar strong { color:var(--olmo); font-weight:600; }
+
+/* ── Pipeline ── */
+.pipe-item {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1.5px solid var(--gris3);
+  padding:0.6rem 0;
+}
+.pipe-item:last-child { border-bottom:none; }
+.pipe-name { font-weight:600; font-size:0.88rem; color:var(--olmo); }
+.pipe-desc { font-size:0.72rem; color:var(--gris1); margin-top:0.05rem; }
+.pipe-when {
+  font-size:0.62rem;
+  font-weight:600;
+  color:var(--blanco);
+  background:var(--pino);
+  padding:0.2rem 0.65rem;
+  border-radius:99px;
+  white-space:nowrap;
+}
+
+/* ── Quote ── */
+.quote {
+  border-left:3px solid var(--castano);
+  padding-left:1rem;
+  font-style:italic;
+  color:var(--gris1);
+  font-size:0.9rem;
+  margin:0.5rem 0;
+}
+
+/* ── Misc ── */
+.page { position:absolute; bottom:0.8rem; right:2rem; font-size:0.6rem; color:var(--gris2); font-weight:500; }
+.slide-footer-text { position:absolute; bottom:0.8rem; left:0; right:0; text-align:center; font-size:0.52rem; color:rgba(255,255,255,0.45); letter-spacing:0.3em; text-transform:uppercase; font-weight:400; }
+.dinn-badge { position:absolute; bottom:0.8rem; left:2rem; font-size:0.58rem; color:var(--gris2); font-weight:500; letter-spacing:0.04em; }
+
+/* ── DINN Logo ── */
+.logo-dinn { display:inline-flex; align-items:center; gap:0.6rem; }
+.logo-dinn-text { font-weight:800; letter-spacing:0.04em; }
+
+/* ── Decorative shapes ── */
+.leaf-deco { position:absolute; opacity:0.06; pointer-events:none; }
+
+/* ── Navigation ── */
+.nav {
+  position:fixed; bottom:0.8rem; left:50%; transform:translateX(-50%);
+  display:flex; gap:0.5rem; align-items:center; z-index:100;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(8px);
+  padding:0.35rem 0.9rem;
+  border-radius:99px;
+}
+.nav button {
+  background:none; border:none; cursor:pointer;
+  font-size:0.7rem; color:rgba(255,255,255,0.6); padding:0.15rem 0.3rem;
+  transition:color 0.2s;
+}
+.nav button:hover { color:#fff; }
+.dots { display:flex; gap:0.25rem; }
+.dot {
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(255,255,255,0.3); cursor:pointer;
+  transition:all 0.25s ease;
+}
+.dot.active { background:var(--fresno); width:18px; border-radius:3px; }
+.counter { font-size:0.55rem; color:rgba(255,255,255,0.5); min-width:2.5rem; text-align:center; font-weight:500; }
+
+/* ── Print ── */
+@media print {
+  html, body { overflow:visible; background:white; height:auto; }
+  .deck { transform:none !important; width:100%; height:auto; }
+  .slide { position:relative; opacity:1 !important; pointer-events:all; page-break-after:always; page-break-inside:avoid; min-height:720px; }
+  .nav { display:none; }
+  .page { position:static; text-align:right; margin-top:1rem; }
+}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- ══ 1. COVER ══════════════════════════════════════════════════════ -->
+<div class="slide bg-pino" id="s1" style="justify-content:center; padding:4rem 5.5rem">
+  <svg class="leaf-deco" style="top:-60px; right:-40px; width:420px; height:420px" viewBox="0 0 200 200">
+    <ellipse cx="160" cy="60" rx="90" ry="50" fill="white" transform="rotate(25 160 60)"/>
+    <ellipse cx="130" cy="130" rx="70" ry="35" fill="white" transform="rotate(-15 130 130)"/>
+  </svg>
+
+  <div class="logo-dinn" style="margin-bottom:2rem">
+    <svg viewBox="0 0 40 40" width="52" height="52">
+      <circle cx="20" cy="20" r="19" fill="none" stroke="white" stroke-width="2"/>
+      <path d="M20 1 A19 19 0 0 1 20 39 Z" fill="white"/>
+    </svg>
+    <span class="logo-dinn-text" style="color:white; font-size:1.8rem">DINN</span>
+  </div>
+
+  <h1 style="color:white; font-size:1.65rem; font-weight:400; margin-bottom:0.6rem; max-width:700px; line-height:1.4">
+    La plataforma de inversión 100% digital de Actinver<br>para el <strong style="font-weight:700">inversionista emergente.</strong>
+  </h1>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem; max-width:680px">
+    <div>
+      <h3 style="color:var(--fresno); font-size:0.72rem">Segmento objetivo</h3>
+      <ul style="list-style:none; padding:0; margin-top:0.3rem">
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">$5K – $200K</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">No asesorados</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Digital-first</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem">Simplicidad y control</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--fresno); font-size:0.72rem">Rol estratégico</h3>
+      <ul style="list-style:none; padding:0; margin-top:0.3rem">
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Segmento masivo digital</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Relación directa con cliente</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem; margin-bottom:0.25rem">Plataforma escalable</li>
+        <li style="color:rgba(255,255,255,0.85); font-size:0.88rem">Bajo costo marginal</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote" style="margin-top:auto; border-left-color:var(--fresno); color:var(--fresno); max-width:550px; font-size:0.95rem">
+    201K clientes. $1,250M en activos. El trabajo de 2026: que cada cliente valga más.
+  </div>
+  <div class="slide-footer-text">ACTINVER · CONFIDENCIAL · ABRIL 2026</div>
+</div>
+
+<!-- ══ 2. OPORTUNIDAD ════════════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <h1>Tamaño de oportunidad</h1>
+  <h2>El inversionista emergente en México</h2>
+
+  <!-- The gap -->
+  <div class="cards c3" style="margin-top:0.3rem">
+    <div class="card accent" style="text-align:center; padding:1rem">
+      <div class="num" style="font-size:2.8rem">70M+</div>
+      <div class="label" style="color:var(--pino)">usan servicios fintech</div>
+      <div class="sub" style="font-size:0.62rem; margin-top:0.2rem">Statista / reportes de industria 2025</div>
+    </div>
+    <div class="card accent" style="text-align:center; padding:1rem">
+      <div class="num" style="font-size:2.8rem">22M</div>
+      <div class="label" style="color:var(--pino)">cuentas de inversión abiertas</div>
+      <div class="sub" style="font-size:0.62rem; margin-top:0.2rem">CNBV 2025</div>
+    </div>
+    <div class="card accent" style="text-align:center; padding:1rem">
+      <div class="num" style="font-size:2.8rem">8M</div>
+      <div class="label" style="color:var(--pino)">sin relación con asesor</div>
+      <div class="sub" style="font-size:0.62rem; margin-top:0.2rem">CNBV / bases no asesoradas</div>
+    </div>
+  </div>
+
+  <div style="margin:1.2rem 0; padding:0.8rem 1.2rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.9rem; font-weight:600; color:var(--pino); margin:0">La oportunidad</p>
+    <p style="font-size:0.85rem; color:var(--olmo); margin:0.3rem 0 0">8M personas sin asesor = mercado vírgeny de relación digital directa. DINN apunta a este segmento con productos simples, transparentes y de bajo costo.</p>
+  </div>
+
+  <div class="page">2</div>
+</div>
+
+<!-- ══ 3. MERCADO & POSICIÓN ═════════════════════════════════════════ -->
+<div class="slide" id="s3">
+  <h1>Posición en el mercado</h1>
+  <h2>Competencia y diferenciación</h2>
+
+  <div class="cards c3" style="margin:0.4rem 0">
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Plataformas grandes</div>
+      <p style="font-size:0.75rem; margin-top:0.3rem">GBM, CI, Kuspit (asesores costosos)</p>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Fintechs puras</div>
+      <p style="font-size:0.75rem; margin-top:0.3rem">Dondé, Yaydoo (sin productos complejos)</p>
+    </div>
+    <div class="card" style="border-color:var(--castano)">
+      <div class="label" style="color:var(--castano); font-weight:700">DINN (Actinver)</div>
+      <p style="font-size:0.75rem; margin-top:0.3rem">Marca segura + productos simples</p>
+    </div>
+  </div>
+
+  <div style="margin:0.8rem 0; padding:0.7rem; border-left:3px solid var(--castano)">
+    <p style="font-size:0.8rem; font-weight:600; color:var(--pino); margin:0">Ventaja de DINN</p>
+    <ul style="margin:0.2rem 0 0; padding-left:1.3rem; font-size:0.75rem">
+      <li>Soporte regulatorio y operativo de Actinver</li>
+      <li>Acceso a productos de la casa (fondos, estructurados)</li>
+      <li>Tecnología móvil optimizada para el emergente</li>
+      <li>Seguridad y reputación de casa matriz</li>
+    </ul>
+  </div>
+
+  <div class="page">3</div>
+</div>
+
+<!-- ══ 4. FINANCIERO 2025: RESUMEN ═══════════════════════════════════ -->
+<div class="slide" id="s4">
+  <h1>Desempeño 2025</h1>
+  <h2>Snapshots financieros y operacionales</h2>
+
+  <div class="cards c2" style="margin:0.4rem 0">
+    <div class="card accent">
+      <div class="num">201K</div>
+      <div class="label" style="color:var(--pino)">clientes activos</div>
+      <div class="sub" style="margin-top:0.15rem">+67% YoY</div>
+    </div>
+    <div class="card accent">
+      <div class="num">$1,250M</div>
+      <div class="label" style="color:var(--pino)">AUM (activos bajo gestión)</div>
+      <div class="sub" style="margin-top:0.15rem">+85% YoY</div>
+    </div>
+    <div class="card accent">
+      <div class="num">$4.2M</div>
+      <div class="label" style="color:var(--pino)">ingresos netos</div>
+      <div class="sub" style="margin-top:0.15rem">+72% YoY</div>
+    </div>
+    <div class="card accent">
+      <div class="num">-$2.1M</div>
+      <div class="label" style="color:var(--pino)">EBITDA</div>
+      <div class="sub" style="margin-top:0.15rem">inversión y escalado</div>
+    </div>
+  </div>
+
+  <div style="margin:0.6rem 0; padding:0.6rem 1rem; background:#FFF3E0; border-radius:8px">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:#FF6F00">Contexto:</strong> DINN es una plataforma joven en fase de crecimiento agresivo. Inversiones en tech, marketing, RH conducen a pérdida operativa transitoria. La rentabilidad mejorará con escala.
+    </p>
+  </div>
+
+  <div class="page">4</div>
+</div>
+
+<!-- ══ 5. SEGMENTACIÓN DE CLIENTES ════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <h1>Segmentación de clientes</h1>
+  <h2>Cómo se organiza la base</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:0.4rem 0">
+    <div style="border:1.5px solid var(--gris3); border-radius:12px; padding:1rem">
+      <h3 style="margin-top:0">Por actividad</h3>
+      <ul style="list-style:none; padding:0; font-size:0.78rem; margin:0.4rem 0">
+        <li style="margin:0.3rem 0"><strong>Activos:</strong> 89K (44%)</li>
+        <li style="margin:0.3rem 0"><strong>Moderados:</strong> 76K (38%)</li>
+        <li style="margin:0.3rem 0"><strong>Dormidos:</strong> 36K (18%)</li>
+      </ul>
+    </div>
+    <div style="border:1.5px solid var(--gris3); border-radius:12px; padding:1rem">
+      <h3 style="margin-top:0">Por AUM</h3>
+      <ul style="list-style:none; padding:0; font-size:0.78rem; margin:0.4rem 0">
+        <li style="margin:0.3rem 0"><strong>Micro:</strong> <$10K (52%)</li>
+        <li style="margin:0.3rem 0"><strong>Pequeño:</strong> $10K–$50K (28%)</li>
+        <li style="margin:0.3rem 0"><strong>Mid:</strong> >$50K (20%)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin:0.6rem 0; padding:0.6rem 1rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.78rem; color:var(--olmo); margin:0">
+      <strong style="color:var(--pino)">Insight:</strong> 44% activos generan 75% del AUM. Enfoque: retener activos + activar dormidos. Micro-usuarios de alto volumen requieren automatización y contenido educativo.
+    </p>
+  </div>
+
+  <div class="page">5</div>
+</div>
+
+<!-- ══ 6. RIESGOS CLAVE ═══════════════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <h1>Riesgos principales</h1>
+  <h2>Desafíos estratégicos y operacionales</h2>
+
+  <div class="cards c2" style="margin:0.4rem 0 0.8rem">
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Rentabilidad</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">Pérdida operativa por crecimiento. Ruta a EBITDA positivo requiere disciplina en CAC.</p>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Churn</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">Usuarios micro-volatiles. Sin engagement frecuente, riesgo de abandono.</p>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Regulatorio</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">Cambios CNBV/SOFOM pueden afectar márgenes o funcionalidad.</p>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Competencia</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">Grandes bancos lanzan fintech. Precio presión inevitable.</p>
+    </div>
+  </div>
+
+  <div style="padding:0.6rem 1rem; background:#FFE0E0; border-radius:8px; border-left:3px solid #D32F2F">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:#D32F2F">Mitigación en plan:</strong> Diversificar ingresos (comisiones, productos propios), mejorar NPS, optimizar marketing spend, equipo senior en finanzas.
+    </p>
+  </div>
+
+  <div class="page">6</div>
+</div>
+
+<!-- ══ 7. PLAN 2026: INGRESOS ═════════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <h1>Plan 2026: Ingresos</h1>
+  <h2>Proyección financiera</h2>
+
+  <div class="cards c3" style="margin:0.4rem 0">
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">$6.8M</div>
+      <div class="label" style="color:var(--pino); font-size:0.75rem">ingresos netos 2026E</div>
+      <div class="sub" style="font-size:0.65rem">+62% vs 2025</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">320K</div>
+      <div class="label" style="color:var(--pino); font-size:0.75rem">clientes EOY 2026</div>
+      <div class="sub" style="font-size:0.65rem">+59% vs 2025</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">$2,100M</div>
+      <div class="label" style="color:var(--pino); font-size:0.75rem">AUM EOY 2026</div>
+      <div class="sub" style="font-size:0.65rem">+68% vs 2025</div>
+    </div>
+  </div>
+
+  <div style="margin:0.6rem 0; padding:0.6rem 1rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:var(--pino)">Drivers:</strong> (1) Crecimiento base clientes; (2) Aumento AUM promedio por cliente; (3) Mix de ingresos mejorado (comisiones > spreads).
+    </p>
+  </div>
+
+  <div class="page">7</div>
+</div>
+
+<!-- ══ 8. PLAN 2026: EBITDA & GASTOS ═════════════════════════════════ -->
+<div class="slide" id="s8">
+  <h1>Plan 2026: Ruta a rentabilidad</h1>
+  <h2>Optimización de márgenes</h2>
+
+  <div class="cards c2" style="margin:0.4rem 0">
+    <div class="card accent">
+      <div class="num" style="font-size:1.8rem">-$0.9M</div>
+      <div class="label" style="color:var(--pino)">EBITDA 2026E</div>
+      <div class="sub" style="margin-top:0.1rem">reducción de pérdida</div>
+    </div>
+    <div class="card accent">
+      <div class="num" style="font-size:1.8rem">-13%</div>
+      <div class="label" style="color:var(--pino)">EBITDA margin</div>
+      <div class="sub" style="margin-top:0.1rem">vs -50% en 2025</div>
+    </div>
+  </div>
+
+  <div style="margin:0.5rem 0; padding:0.6rem 1rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0"><strong style="color:var(--pino)">Clave:</strong> CAC se reduce por eficiencia (brand maduro) + reducción de burn en RH. Objetivos: aumentar ARPU, mejorar retención, controlar marketing spend.</p>
+  </div>
+
+  <div style="margin:0.5rem 0; padding:0.6rem 1rem; background:#FFF3E0; border-radius:8px">
+    <p style="font-size:0.73rem; color:var(--olmo); margin:0">
+      <strong style="color:#FF6F00">2027 outlook:</strong> EBITDA positivo asumiendo crecimiento base + disciplina de costos.
+    </p>
+  </div>
+
+  <div class="page">8</div>
+</div>
+
+<!-- ══ 9. EQUIPO & ORGANIZACIÓN ═══════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <h1>Equipo</h1>
+  <h2>Estructura y liderazgo</h2>
+
+  <div class="cards c2" style="margin:0.4rem 0">
+    <div class="card">
+      <div class="label">CEO</div>
+      <p style="font-size:0.75rem; margin-top:0.25rem; font-weight:600">Arturo Camargo</p>
+      <p style="font-size:0.68rem; color:var(--gris1)">Ex Actinver. 12+ años fintech.</p>
+    </div>
+    <div class="card">
+      <div class="label">CTO / Productos</div>
+      <p style="font-size:0.75rem; margin-top:0.25rem; font-weight:600">Equipo tech (3 engineers)</p>
+      <p style="font-size:0.68rem; color:var(--gris1)">Desarrollo ágil, cloud-native.</p>
+    </div>
+    <div class="card">
+      <div class="label">Operaciones & Comp</div>
+      <p style="font-size:0.75rem; margin-top:0.25rem; font-weight:600">2 FTE + outsourcing</p>
+      <p style="font-size:0.68rem; color:var(--gris1)">Soporte Actinver + partner ops.</p>
+    </div>
+    <div class="card">
+      <div class="label">Marketing & Ventas</div>
+      <p style="font-size:0.75rem; margin-top:0.25rem; font-weight:600">2 FTE + growth partners</p>
+      <p style="font-size:0.68rem; color:var(--gris1)">Acquisition + content + afiliados.</p>
+    </div>
+  </div>
+
+  <div style="margin:0.5rem 0; padding:0.6rem 1rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:var(--pino)">Fortaleza:</strong> Equipo compacto, experiencia fintech/tech. <strong style="color:var(--pino)">Brecha:</strong> Reforzar data/analytics y customer success.
+    </p>
+  </div>
+
+  <div class="page">9</div>
+</div>
+
+<!-- ══ 10. MÉTRICAS CLAVE & NPS ═══════════════════════════════════════ -->
+<div class="slide" id="s10">
+  <h1>Métricas clave 2026</h1>
+  <h2>Indicadores de éxito</h2>
+
+  <div class="cards c3" style="margin:0.4rem 0">
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">45+</div>
+      <div class="label" style="color:var(--pino)">NPS target</div>
+      <div class="sub" style="font-size:0.65rem">Actualmente: 38</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">2.5%</div>
+      <div class="label" style="color:var(--pino)">churn mensual</div>
+      <div class="sub" style="font-size:0.65rem">Target (vs 3.1% hoy)</div>
+    </div>
+    <div class="card accent" style="text-align:center">
+      <div class="num" style="font-size:2rem">$3,200</div>
+      <div class="label" style="color:var(--pino)">ARPU promedio</div>
+      <div class="sub" style="font-size:0.65rem">+40% vs 2025</div>
+    </div>
+  </div>
+
+  <div style="margin:0.5rem 0; padding:0.6rem 1rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:var(--pino)">Plan NPS:</strong> Mejorar onboarding, soporte, contenido educativo → reducir fricción → subir recomendación.
+    </p>
+  </div>
+
+  <div class="page">10</div>
+</div>
+
+<!-- ══ 11. INICIATIVAS CLAVE 2026 ═════════════════════════════════════ -->
+<div class="slide" id="s11">
+  <h1>Iniciativas 2026</h1>
+  <h2>Roadmap de productos y operaciones</h2>
+
+  <div class="pipe-item">
+    <div>
+      <div class="pipe-name">Mejora UX/onboarding</div>
+      <div class="pipe-desc">Reducir abandono inicial, educar sobre inv.rsión</div>
+    </div>
+    <div class="pipe-when">Q1-Q2</div>
+  </div>
+
+  <div class="pipe-item">
+    <div>
+      <div class="pipe-name">Productos auto-invertidos</div>
+      <div class="pipe-desc">Fondos índice, carteras modelo (diversificación)</div>
+    </div>
+    <div class="pipe-when">Q2-Q3</div>
+  </div>
+
+  <div class="pipe-item">
+    <div>
+      <div class="pipe-name">API partners</div>
+      <div class="pipe-desc">Integración con fintechs (agregadores, finanzas personales)</div>
+    </div>
+    <div class="pipe-when">Q3-Q4</div>
+  </div>
+
+  <div class="pipe-item">
+    <div>
+      <div class="pipe-name">Equipo analytics</div>
+      <div class="pipe-desc">Data-driven decisiones, predicción de churn</div>
+    </div>
+    <div class="pipe-when">Q1</div>
+  </div>
+
+  <div class="page">11</div>
+</div>
+
+<!-- ══ 12. ESCENARIOS FINANCIEROS ═════════════════════════════════════ -->
+<div class="slide" id="s12">
+  <h1>Escenarios 2026–2027</h1>
+  <h2>Base, Upside, Downside</h2>
+
+  <div class="cards c3" style="margin:0.4rem 0">
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Base</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">
+        <strong>320K</strong> clientes, <strong>$6.8M</strong> ingresos.<br>
+        Ejecución plan según calendario.
+      </p>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Upside</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">
+        <strong>420K</strong> clientes (+31%), <strong>$9.2M</strong> ingresos.<br>
+        Marketing hiper-efectivo, strong CAC ROI.
+      </p>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--castano)">Downside</div>
+      <p style="font-size:0.72rem; margin-top:0.2rem">
+        <strong>220K</strong> clientes (-31%), <strong>$4.5M</strong> ingresos.<br>
+        Churn sube, crecimiento lento. Presión márgenes.
+      </p>
+    </div>
+  </div>
+
+  <div style="margin:0.5rem 0; padding:0.6rem 1rem; background:var(--olivo); border-radius:8px">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:var(--pino)">Supuestos Base:</strong> CAC amortiza en 14 meses; churn baja a 2.5%; NPS sube a 45+; ARPU crece +40%.
+    </p>
+  </div>
+
+  <div class="page">12</div>
+</div>
+
+<!-- ══ 13. RECOMENDACIONES ═══════════════════════════════════════════ -->
+<div class="slide" id="s13">
+  <h1>Recomendaciones</h1>
+  <h2>Prioridades del Consejo</h2>
+
+  <div style="display:flex; flex-direction:column; gap:0.4rem">
+    <div class="band">1. Confirmar plan de inversión en tech / producto (Q1–Q2)</div>
+    <div class="band">2. Establecer SLAs de churn y NPS (review mensual)</div>
+    <div class="band">3. Definir metas ARPU por segmento (micro, small, mid)</div>
+    <div class="band">4. Auditar CAC y ROI por canal (márketing + afiliados)</div>
+    <div class="band">5. Reforzar finanzas + analytics (contratar 1 FTE en Q1)</div>
+  </div>
+
+  <div style="margin:0.6rem 0; padding:0.6rem 1rem; background:#E8F5E9; border-radius:8px; border-left:3px solid #2E7D32">
+    <p style="font-size:0.75rem; color:var(--olmo); margin:0">
+      <strong style="color:#2E7D32">Conclusión:</strong> DINN es estratégico para Actinver (nuevos segmentos, digital, rentabilidad futura). Plan 2026 es realista si se ejecuta con disciplina. Riesgos identificados son gestionables.
+    </p>
+  </div>
+
+  <div class="page">13</div>
+</div>
+
+<!-- ══ 14. APÉNDICE: TÉRMINOS ═════════════════════════════════════════ -->
+<div class="slide" id="s14">
+  <h1>Términos & Abreviaciones</h1>
+  <h2>Glosario</h2>
+
+  <ul style="list-style:none; padding:0; font-size:0.78rem">
+    <li style="margin:0.35rem 0"><strong>AUM:</strong> Activos Bajo Gestión</li>
+    <li style="margin:0.35rem 0"><strong>ARPU:</strong> Average Revenue Per User</li>
+    <li style="margin:0.35rem 0"><strong>CAC:</strong> Customer Acquisition Cost</li>
+    <li style="margin:0.35rem 0"><strong>NPS:</strong> Net Promoter Score (rango: -100 a +100)</li>
+    <li style="margin:0.35rem 0"><strong>EBITDA:</strong> Earnings Before Interest, Tax, Depreciation & Amortization</li>
+    <li style="margin:0.35rem 0"><strong>YoY:</strong> Year-over-Year</li>
+    <li style="margin:0.35rem 0"><strong>FTE:</strong> Full-Time Equivalent</li>
+    <li style="margin:0.35rem 0"><strong>SOFOM:</strong> Sociedad Financiera de Objeto Múltiple (regulador)</li>
+    <li style="margin:0.35rem 0"><strong>CNBV:</strong> Comisión Nacional Bancaria y de Valores</li>
+  </ul>
+
+  <div class="page">14</div>
+</div>
+
+<!-- ══ 15. CONTACTO ═══════════════════════════════════════════════════ -->
+<div class="slide" id="s15">
+  <h1 style="margin-bottom:1rem">Contacto</h1>
+  
+  <div style="text-align:center; margin:2rem 0">
+    <p style="font-size:1rem; font-weight:600; color:var(--pino)">Arturo Camargo</p>
+    <p style="font-size:0.85rem; color:var(--gris1); margin-top:0.3rem">CEO, DINN (Actinver)</p>
+    <p style="font-size:0.8rem; color:var(--gris2); margin-top:0.5rem">
+      <a href="mailto:arturo@dinn.mx" style="color:var(--castano); text-decoration:none">arturo@dinn.mx</a><br>
+      +52 55 1234 5678
+    </p>
+  </div>
+
+  <div style="margin:2rem auto 0; padding:1rem; background:var(--olivo); border-radius:8px; max-width:400px; text-align:center">
+    <p style="font-size:0.75rem; color:var(--pino); font-weight:600; margin:0 0 0.3rem">Próxima reunión</p>
+    <p style="font-size:0.85rem; color:var(--olmo); margin:0">Mayo 2026 - Update de ejecución y resultados Q1</p>
+  </div>
+
+  <div class="slide-footer-text">ACTINVER · CONFIDENCIAL · ABRIL 2026</div>
+</div>
+
+</div><!-- end .deck -->
+
+<script>
+let cur = 0;
+const slides = Array.from(document.querySelectorAll('.slide'));
+const max = slides.length - 1;
+
+function go(n) {
+  if (n > max) return; if (n < 0) return;
+  slides[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  updateNav();
+  updateDots();
+}
+
+function next() { go(cur + 1); }
+function prev() { go(cur - 1); }
+
+function updateNav() {
+  document.querySelector('.counter').textContent = (cur + 1) + ' / ' + (max + 1);
+}
+
+function updateDots() {
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === cur);
+  });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === ' ') { e.preventDefault(); next(); }
+  if (e.key === 'Shift') {
+    if (e.shiftKey && e.key === 'Shift') {
+      // Shift clicked
+      let n = parseInt(prompt('Go to slide (1–' + (max+1) + '):'));
+      if (n && n > 0 && n <= max + 1) go(n - 1);
+    }
+  }
+});
+
+// Dot navigation
+const dots = document.querySelectorAll('.dot');
+dots.forEach((d, i) => {
+  d.addEventListener('click', () => go(i));
+});
+
+// Button navigation
+document.querySelector('.nav-prev').addEventListener('click', function(e) {
+  e.preventDefault(); prev();
+});
+
+document.querySelector('.nav-next').addEventListener('click', function(e) {
+  e.preventDefault(); next();
+});
+
+// Mousewheel
+document.addEventListener('wheel', function(e) {
+  e.preventDefault();
+  if (e.deltaY > 0) next();
+  if (e.deltaY < 0) prev();
+});
+
+// Touch swipe
+let touchX = 0;
+document.addEventListener('touchstart', function(e) {
+  touchX = e.touches[0].clientX;
+});
+
+document.addEventListener('touchend', function(e) {
+  const diff = touchX - e.changedTouches[0].clientX;
+  if (diff > 50) next();
+  if (diff < -50) prev();
+});
+
+// Navigation bar HTML
+const nav = `
+<div class="dots"></div>
+<button class="nav-prev">← prev</button>
+<span class="counter"></span>
+<button class="nav-next">next →</button>
+`;
+
+const navContainer = document.createElement('div');
+navContainer.className = 'nav';
+navContainer.innerHTML = nav;
+document.body.appendChild(navContainer);
+
+// Populate dots
+const dotsContainer = document.querySelector('.dots');
+slides.forEach(() => {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dotsContainer.appendChild(dot);
+});
+
+// Initialize
+slides[0].classList.add('active');
+updateNav();
+updateDots();
+</script>
+</body>
+</html>
